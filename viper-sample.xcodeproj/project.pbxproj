@@ -10,6 +10,8 @@
 		9C7CF38721097B8700867F33 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38621097B8700867F33 /* User.swift */; };
 		9C7CF38921097BD400867F33 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38821097BD400867F33 /* Repository.swift */; };
 		9C7CF38B21097C8200867F33 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38A21097C8200867F33 /* SearchResponse.swift */; };
+		9C7CF38D21097E1000867F33 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38C21097E1000867F33 /* GitHubAPI.swift */; };
+		9C7CF38F2109978500867F33 /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38E2109978500867F33 /* GitHubClient.swift */; };
 		9C9B082021094ECE000C032F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B081F21094ECE000C032F /* AppDelegate.swift */; };
 		9C9B082221094ECE000C032F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B082121094ECE000C032F /* ViewController.swift */; };
 		9C9B082521094ECE000C032F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B082321094ECE000C032F /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		9C7CF38621097B8700867F33 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9C7CF38821097BD400867F33 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		9C7CF38A21097C8200867F33 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		9C7CF38C21097E1000867F33 /* GitHubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
+		9C7CF38E2109978500867F33 /* GitHubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
 		9C9B081C21094ECD000C032F /* viper-sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "viper-sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C9B081F21094ECE000C032F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C9B082121094ECE000C032F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 		9C7CF38321097B2900867F33 /* GitHubClient */ = {
 			isa = PBXGroup;
 			children = (
+				9C7CF38C21097E1000867F33 /* GitHubAPI.swift */,
+				9C7CF38E2109978500867F33 /* GitHubClient.swift */,
 			);
 			path = GitHubClient;
 			sourceTree = "<group>";
@@ -170,7 +176,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C9B082221094ECE000C032F /* ViewController.swift in Sources */,
+				9C7CF38D21097E1000867F33 /* GitHubAPI.swift in Sources */,
 				9C7CF38B21097C8200867F33 /* SearchResponse.swift in Sources */,
+				9C7CF38F2109978500867F33 /* GitHubClient.swift in Sources */,
 				9C9B082021094ECE000C032F /* AppDelegate.swift in Sources */,
 				9C7CF38721097B8700867F33 /* User.swift in Sources */,
 				9C7CF38921097BD400867F33 /* Repository.swift in Sources */,

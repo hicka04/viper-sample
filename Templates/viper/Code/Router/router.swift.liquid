@@ -1,5 +1,5 @@
 //
-//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.file_name }}
 //  {{ module_info.project_name }}
 //
 //  Created by {{ developer.name }} on {{ date }}.
@@ -12,7 +12,7 @@ class {{ module_info.name }}Router {
 
     weak var viewController: UIViewController?
 
-    init(viewController: UIViewController) {
+    private init(viewController: UIViewController) {
         self.viewController = viewController
     }
 

@@ -22,6 +22,12 @@ class RepositoryListViewController: UIViewController {
 
         presenter.viewDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
 }
 
 extension RepositoryListViewController: RepositoryListView {

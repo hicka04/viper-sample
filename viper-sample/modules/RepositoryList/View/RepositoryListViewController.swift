@@ -25,7 +25,10 @@ class RepositoryListViewController: UIViewController {
 }
 
 extension RepositoryListViewController: RepositoryListView {
-
+    
+    func reloadData() {
+        tableView.reloadData()
+    }
 }
 
 extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -35,10 +38,14 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return presenter.numberOfRow(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let repository = presenter.repository(at: indexPath)
+        cell.textLabel?.text = repository.name
+        
+        return cell
     }
 }

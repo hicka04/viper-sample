@@ -24,10 +24,21 @@ class RepositoryListViewPresenter {
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
 
     func viewDidLoad() {
-
+        interactor.fetchRepositories(keyword: "swift")
+    }
+    
+    func numberOfRow(in section: Int) -> Int {
+        return interactor.numberOfRepositories
+    }
+    
+    func repository(at indexPath: IndexPath) -> Repository {
+        return interactor.repository(at: indexPath)
     }
 }
 
 extension RepositoryListViewPresenter: RepositoryListInteractorOutput {
 
+    func fetchRepositoriesDidFinish() {
+        view?.reloadData()
+    }
 }

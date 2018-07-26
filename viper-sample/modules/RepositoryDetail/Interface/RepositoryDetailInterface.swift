@@ -11,6 +11,7 @@ import Foundation
 // MARK: - view
 protocol RepositoryDetailView: class {
 
+    func load(request urlRequest: URLRequest)
 }
 
 // MARK: - presenter

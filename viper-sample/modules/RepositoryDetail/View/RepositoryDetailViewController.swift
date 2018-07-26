@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 class RepositoryDetailViewController: UIViewController {
 
     var presenter: RepositoryDetailViewPresentable!
+    
+    @IBOutlet private weak var webView: WKWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,4 +24,7 @@ class RepositoryDetailViewController: UIViewController {
 
 extension RepositoryDetailViewController: RepositoryDetailView {
 
+    func load(request urlRequest: URLRequest) {
+        webView.load(urlRequest)
+    }
 }

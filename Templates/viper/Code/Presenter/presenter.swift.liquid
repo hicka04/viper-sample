@@ -1,0 +1,33 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+class {{ module_info.name }}ViewPresenter {
+
+    weak var view: {{ module_info.name }}View?
+    let interactor: {{ module_info.name }}Usecase
+    let router: {{ module_info.name }}Wireframe
+
+    init(view: {{ module_info.name }}View, interactor: {{ module_info.name }}Usecase, router: {{ module_info.name }}Wireframe) {
+        self.view = view
+        self.interactor = interactor
+        self.router = router
+    }
+}
+
+extension {{ module_info.name }}ViewPresenter: {{ module_info.name }}ViewPresentable {
+
+    func viewDidLoad() {
+
+    }
+}
+
+extension {{ module_info.name }}ViewPresenter: {{ module_info.name }}InteractorOutput {
+
+}

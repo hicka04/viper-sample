@@ -1,0 +1,20 @@
+### Headers settings
+company: hicka04
+
+### Xcode project settings
+project_name: viper-sample
+xcodeproj_path: viper-sample.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: viper-sample
+
+# The file path for new modules
+project_file_path: /viper-sample/modules
+
+# The Xcode group path to new modules
+project_group_path: /viper-sample/modules
+
+### Templates
+templates:
+- {name: viper, local: 'viper'}

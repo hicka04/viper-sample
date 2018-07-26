@@ -20,6 +20,7 @@ protocol RepositoryListViewPresentable: class {
     func viewDidLoad()
     func numberOfRow(in section: Int) -> Int
     func repository(at indexPath: IndexPath) -> Repository
+    func didSelectRow(at indexPath: IndexPath)
 }
 
 // MARK: - interactor
@@ -38,4 +39,5 @@ protocol RepositoryListInteractorOutput: class {
 // MARK: - router
 protocol RepositoryListWireframe: class {
 
+    func showRepositoryDetail(_ repository: Repository)
 }

@@ -31,4 +31,8 @@ class RepositoryListRouter {
 
 extension RepositoryListRouter: RepositoryListWireframe {
 
+    func showRepositoryDetail(_ repository: Repository) {
+        let detailView = RepositoryDetailRouter.assembleModules(repository: repository)
+        viewController?.navigationController?.pushViewController(detailView, animated: true)
+    }
 }

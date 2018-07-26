@@ -34,6 +34,10 @@ extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     func repository(at indexPath: IndexPath) -> Repository {
         return interactor.repository(at: indexPath)
     }
+    
+    func didSelectRow(at indexPath: IndexPath) {
+        router.showRepositoryDetail(repository(at: indexPath))
+    }
 }
 
 extension RepositoryListViewPresenter: RepositoryListInteractorOutput {

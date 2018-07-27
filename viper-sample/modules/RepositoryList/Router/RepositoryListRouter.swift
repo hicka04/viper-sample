@@ -12,7 +12,7 @@ class RepositoryListRouter {
 
     weak var viewController: UIViewController?
 
-    init(viewController: UIViewController) {
+    private init(viewController: UIViewController) {
         self.viewController = viewController
     }
 

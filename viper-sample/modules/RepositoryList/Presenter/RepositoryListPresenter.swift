@@ -10,6 +10,7 @@ import Foundation
 
 class RepositoryListViewPresenter {
 
+    // View, Interactor, Routerへのアクセスはprotocolを介して行う
     weak var view: RepositoryListView?
     let interactor: RepositoryListUsecase
     let router: RepositoryListWireframe
@@ -21,10 +22,11 @@ class RepositoryListViewPresenter {
     }
 }
 
+// Presenterのプロトコルに準拠する
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
 
     func viewDidLoad() {
-        interactor.fetchRepositories(keyword: "swift")
+        interactor.fetchRepositories(keyword: "swift") // Interactorにデータ取得処理を依頼
     }
     
     func numberOfRow(in section: Int) -> Int {
@@ -36,13 +38,14 @@ extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     }
     
     func didSelectRow(at indexPath: IndexPath) {
-        router.showRepositoryDetail(repository(at: indexPath))
+        router.showRepositoryDetail(repository(at: indexPath)) // Routerに画面遷移を依頼
     }
 }
 
+// Interactorからの通知に関するプロトコルに準拠する
 extension RepositoryListViewPresenter: RepositoryListInteractorOutput {
 
     func fetchRepositoriesDidFinish() {
-        view?.reloadData()
+        view?.reloadData() // データ取得が完了したら画面の更新を依頼
     }
 }

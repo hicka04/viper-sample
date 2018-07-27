@@ -10,6 +10,7 @@ import UIKit
 
 class RepositoryListViewController: UIViewController {
 
+    // Presenterへのアクセスはprotocolを介して行う
     var presenter: RepositoryListViewPresentable!
     
     @IBOutlet private weak var tableView: UITableView!
@@ -20,7 +21,7 @@ class RepositoryListViewController: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
 
-        presenter.viewDidLoad()
+        presenter.viewDidLoad() // Viewの読み込みが完了したことを通知
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,10 +31,11 @@ class RepositoryListViewController: UIViewController {
     }
 }
 
+// Viewのプロトコルに準拠する
 extension RepositoryListViewController: RepositoryListView {
     
     func reloadData() {
-        tableView.reloadData()
+        tableView.reloadData() // 画面の更新
     }
 }
 

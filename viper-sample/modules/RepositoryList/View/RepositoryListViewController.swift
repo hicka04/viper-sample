@@ -19,7 +19,7 @@ class RepositoryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(RepositoryResultCell.createNib(), forCellReuseIdentifier: cellId)
 
         presenter.viewDidLoad() // Viewの読み込みが完了したことを通知
     }
@@ -50,9 +50,9 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RepositoryResultCell
         let repository = presenter.repository(at: indexPath)
-        cell.textLabel?.text = repository.name
+        cell.setRepository(repository)
         
         return cell
     }

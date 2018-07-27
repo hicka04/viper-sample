@@ -14,6 +14,7 @@ struct Repository: Decodable {
     let name: String
     let fullName: String
     let htmlURL: URL
+    let starCount: Int
     let owner: User
     
     enum CodingKeys: String, CodingKey {
@@ -21,6 +22,7 @@ struct Repository: Decodable {
         case name
         case fullName = "full_name"
         case htmlURL = "html_url"
+        case starCount = "stargazers_count"
         case owner
     }
 }

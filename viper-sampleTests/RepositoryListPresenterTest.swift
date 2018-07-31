@@ -10,6 +10,7 @@ import XCTest
 
 class RepositoryListPresenterTest: XCTestCase {
     
+    // 依存するクラスの初期化
     let view = ViewMock()
     let interactor = InteractorMock()
     let router = RouterMock()
@@ -27,12 +28,18 @@ class RepositoryListPresenterTest: XCTestCase {
     }
     
     func test_viewDidLoad() {
+        // PresenterにviewDidLoadのイベントが届いたときの挙動をテスト
+        // Interactorにリポジトリ一覧を取得するよう依頼する実装にしたので、
+        // 正しく依頼されているかチェック
         XCTAssertFalse(interactor.isCalled_fetchRepositories)
         presenter.viewDidLoad()
         XCTAssertTrue(interactor.isCalled_fetchRepositories)
     }
     
     func test_fetchRepositoriesDidFinish() {
+        // Presenterにリポジトリ一覧の取得完了イベントが届いたときの挙動テスト
+        // イベントを受け取ったらViewに再描画を依頼するよう実装したので、
+        // 正しく依頼されているかチェック
         XCTAssertFalse(view.isCalled_reloadData)
         presenter.fetchRepositoriesDidFinish()
         XCTAssertTrue(view.isCalled_reloadData)

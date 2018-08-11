@@ -112,6 +112,32 @@
 			path = RepositoryDetail;
 			sourceTree = "<group>";
 		};
+		17F09BC9211EA022007FEA3A /* application */ = {
+			isa = PBXGroup;
+			children = (
+				9C9B081F21094ECE000C032F /* AppDelegate.swift */,
+				9C9B082B21094ECF000C032F /* Info.plist */,
+				9C9B082821094ECF000C032F /* LaunchScreen.storyboard */,
+			);
+			path = application;
+			sourceTree = "<group>";
+		};
+		17F09BCA211EA06E007FEA3A /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				9C9B082621094ECF000C032F /* Assets.xcassets */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		17F09BCB211EA09F007FEA3A /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				9C7CF3902109B32D00867F33 /* RootRouter.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		1CEC41CD6E35048813AC1EDD /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +185,7 @@
 		9C7CF38221095B4E00867F33 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				17F09BCB211EA09F007FEA3A /* Root */,
 				9C7CF38321097B2900867F33 /* GitHubClient */,
 				2E9607551792C57BD2D08C1E /* RepositoryList */,
 				15715F26DC1D6115F4D56399 /* RepositoryDetail */,
@@ -223,14 +250,11 @@
 		9C9B081E21094ECD000C032F /* viper-sample */ = {
 			isa = PBXGroup;
 			children = (
-				9C9B081F21094ECE000C032F /* AppDelegate.swift */,
-				9C7CF3902109B32D00867F33 /* RootRouter.swift */,
+				17F09BC9211EA022007FEA3A /* application */,
 				9C7CF38221095B4E00867F33 /* modules */,
 				9C7CF38421097B5E00867F33 /* enitities */,
 				9C863E26210ACEDF000D0EE5 /* extensions */,
-				9C9B082621094ECF000C032F /* Assets.xcassets */,
-				9C9B082821094ECF000C032F /* LaunchScreen.storyboard */,
-				9C9B082B21094ECF000C032F /* Info.plist */,
+				17F09BCA211EA06E007FEA3A /* resources */,
 			);
 			path = "viper-sample";
 			sourceTree = "<group>";
@@ -578,7 +602,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8RYHZQ93KG;
-				INFOPLIST_FILE = "viper-sample/Info.plist";
+				INFOPLIST_FILE = "viper-sample/application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hicka04.viper-sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,7 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8RYHZQ93KG;
-				INFOPLIST_FILE = "viper-sample/Info.plist";
+				INFOPLIST_FILE = "viper-sample/application/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hicka04.viper-sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";

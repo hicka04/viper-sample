@@ -124,5 +124,7 @@ extension RepositoryListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchButtonDidPush()
+        
+        searchBar.resignFirstResponder()
     }
 }

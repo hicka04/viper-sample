@@ -63,7 +63,7 @@ extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     }
     
     func didSelectRow(at indexPath: IndexPath) {
-        guard !repositories.isEmpty else { return }
+        guard indexPath.row < repositories.count else { return }
         
         let repository = repositories[indexPath.row]
         router.showRepositoryDetail(repository) // Routerに画面遷移を依頼

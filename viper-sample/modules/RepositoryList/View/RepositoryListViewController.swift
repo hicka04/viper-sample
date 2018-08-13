@@ -23,10 +23,6 @@ class RepositoryListViewController: UIViewController {
         
         return searchBar
     }()
-    private lazy var searchButton: UIBarButtonItem = UIBarButtonItem(title: "Search",
-                                                                     style: .done,
-                                                                     target: self,
-                                                                     action: #selector(searchButtonDidPush))
     
     private let refreshControl = UIRefreshControl()
     
@@ -43,20 +39,12 @@ class RepositoryListViewController: UIViewController {
         
         searchBar.delegate = self
         navigationItem.titleView = searchBar
-        navigationItem.rightBarButtonItem = searchButton
-        searchButton.isEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: true)
         }
-    }
-    
-    @objc private func searchButtonDidPush() {
-        guard let text = searchBar.text else { return }
-        
-        presenter.searchButtonDidPush(searchText: text)
     }
     
     @objc private func refreshControlValueChanged(sender: UIRefreshControl) {
@@ -118,12 +106,10 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
 
 extension RepositoryListViewController: UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchButton.isEnabled = !searchText.isEmpty
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchButtonDidPush()
+        guard let text = searchBar.text else { return }
+        
+        presenter.searchButtonDidPush(searchText: text)
         
         searchBar.resignFirstResponder()
     }

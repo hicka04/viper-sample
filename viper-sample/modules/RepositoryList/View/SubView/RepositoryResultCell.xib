@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +45,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="m4R-L0-ZYf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="R8t-U6-e0B"/>
-                    <constraint firstAttribute="bottom" secondItem="m4R-L0-ZYf" secondAttribute="bottom" id="Wpp-k0-CSh"/>
                     <constraint firstAttribute="trailing" secondItem="m4R-L0-ZYf" secondAttribute="trailing" constant="20" symbolic="YES" id="XXW-BD-B5R"/>
                     <constraint firstItem="m4R-L0-ZYf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="nvX-tP-xKm"/>
                 </constraints>

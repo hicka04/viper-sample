@@ -18,6 +18,7 @@ protocol RepositoryListView: class {
 protocol RepositoryListViewPresentable: class {
 
     func viewDidLoad()
+    func searchTextDidChange(text: String)
     func numberOfRow(in section: Int) -> Int
     func repository(at indexPath: IndexPath) -> Repository
     func didSelectRow(at indexPath: IndexPath)

@@ -36,13 +36,16 @@ extension RepositoryListInteractor: RepositoryListUsecase {
         client.send(request: request) { result in
             switch result {
             case .success(let response):
-                self.repositories += response.items
+                self.repositories = response.items
                 DispatchQueue.main.async {
                     // 取得完了したことを通知
                     self.output?.fetchRepositoriesDidFinish()
                 }
             case .failure:
-                break
+                self.repositories.removeAll()
+                DispatchQueue.main.async {
+                    self.output?.fetchRepositoriesDidFinish()
+                }
             }
         }
     }

@@ -15,11 +15,21 @@ class RepositoryListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     private let cellId = "cellId"
+    
+    private let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "リポジトリ名を入力..."
+        
+        return searchBar
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(RepositoryResultCell.createNib(), forCellReuseIdentifier: cellId)
+        
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
 
         presenter.viewDidLoad() // Viewの読み込みが完了したことを通知
     }
@@ -59,5 +69,13 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.didSelectRow(at: indexPath)
+    }
+}
+
+extension RepositoryListViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        presenter.searchTextDidChange(text: searchText)
     }
 }

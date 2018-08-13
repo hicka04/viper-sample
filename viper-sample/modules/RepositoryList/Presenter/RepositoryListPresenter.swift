@@ -26,7 +26,12 @@ class RepositoryListViewPresenter {
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
 
     func viewDidLoad() {
-        interactor.fetchRepositories(keyword: "swift") // Interactorにデータ取得処理を依頼
+//        interactor.fetchRepositories(keyword: "swift") // Interactorにデータ取得処理を依頼
+        view?.reloadData()
+    }
+    
+    func searchTextDidChange(text: String) {
+        interactor.fetchRepositories(keyword: text)
     }
     
     func numberOfRow(in section: Int) -> Int {
@@ -47,5 +52,6 @@ extension RepositoryListViewPresenter: RepositoryListInteractorOutput {
 
     func fetchRepositoriesDidFinish() {
         view?.reloadData() // データ取得が完了したら画面の更新を依頼
+        print(interactor.numberOfRepositories)
     }
 }

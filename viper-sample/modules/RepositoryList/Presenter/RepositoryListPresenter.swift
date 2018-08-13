@@ -46,7 +46,7 @@ class RepositoryListViewPresenter {
 // Presenterのプロトコルに準拠する
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     
-    func searchTextDidChange(text: String) {
+    func searchButtonDidPush(text: String) {
         interactor.fetchRepositories(keyword: text)
     }
     

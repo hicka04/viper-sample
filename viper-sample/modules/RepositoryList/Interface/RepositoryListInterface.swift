@@ -17,7 +17,7 @@ protocol RepositoryListView: class {
 // MARK: - presenter
 protocol RepositoryListViewPresentable: class {
 
-    func searchTextDidChange(text: String)
+    func searchButtonDidPush(text: String)
     func didSelectRow(at indexPath: IndexPath)
 }
 

@@ -39,6 +39,7 @@ class RepositoryListViewController: UIViewController {
         searchBar.delegate = self
         navigationItem.titleView = searchBar
         navigationItem.rightBarButtonItem = searchButton
+        searchButton.isEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +50,7 @@ class RepositoryListViewController: UIViewController {
     
     @objc private func searchButtonDidPush() {
         guard let text = searchBar.text else { return }
+        
         presenter.searchButtonDidPush(text: text)
     }
 }
@@ -95,9 +97,11 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
 
 extension RepositoryListViewController: UISearchBarDelegate {
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchButton.isEnabled = !searchText.isEmpty
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else { return }
-        
-        presenter.searchButtonDidPush(text: text)
+        searchButtonDidPush()
     }
 }

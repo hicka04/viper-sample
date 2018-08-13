@@ -47,6 +47,8 @@ class RepositoryListViewPresenter {
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     
     func searchButtonDidPush(text: String) {
+        guard !text.isEmpty else { return }
+        
         interactor.fetchRepositories(keyword: text)
     }
     

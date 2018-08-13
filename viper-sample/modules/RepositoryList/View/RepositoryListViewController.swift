@@ -28,6 +28,8 @@ class RepositoryListViewController: UIViewController {
                                                                      target: self,
                                                                      action: #selector(searchButtonDidPush))
     
+    private let refreshControl = UIRefreshControl()
+    
     private var data: [RepositoryListCellType] = []
 
     override func viewDidLoad() {
@@ -35,6 +37,9 @@ class RepositoryListViewController: UIViewController {
         
         tableView.register(RepositoryResultCell.createNib(), forCellReuseIdentifier: cellId)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: errorCellId)
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlValueChanged(sender:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         
         searchBar.delegate = self
         navigationItem.titleView = searchBar
@@ -51,16 +56,32 @@ class RepositoryListViewController: UIViewController {
     @objc private func searchButtonDidPush() {
         guard let text = searchBar.text else { return }
         
-        presenter.searchButtonDidPush(text: text)
+        presenter.searchButtonDidPush(searchText: text)
+    }
+    
+    @objc private func refreshControlValueChanged(sender: UIRefreshControl) {
+        guard let text = searchBar.text else { return }
+        
+        presenter.refreshControlValueChanged(searchText: text)
     }
 }
 
 // Viewのプロトコルに準拠する
 extension RepositoryListViewController: RepositoryListView {
     
+    func showRefreshView() {
+        guard !refreshControl.isRefreshing else { return }
+        
+        refreshControl.beginRefreshingManually(in: tableView)
+    }
+    
     func reloadData(_ data: [RepositoryListCellType]) {
         self.data = data
         tableView.reloadData() // 画面の更新
+        
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
     }
 }
 

@@ -11,13 +11,15 @@ import Foundation
 // MARK: - view
 protocol RepositoryListView: class {
 
+    func showRefreshView()
     func reloadData(_ data: [RepositoryListCellType])
 }
 
 // MARK: - presenter
 protocol RepositoryListViewPresentable: class {
 
-    func searchButtonDidPush(text: String)
+    func searchButtonDidPush(searchText: String)
+    func refreshControlValueChanged(searchText: String)
     func didSelectRow(at indexPath: IndexPath)
 }
 

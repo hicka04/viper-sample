@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		120631170838919E965E457D /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E62005E396207F2143A02 /* RepositoryDetailViewController.swift */; };
+		17F09BCD2121B055007FEA3A /* UIRefreshControl+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */; };
 		36BD27A1D2145B3ADEB0B8D4 /* RepositoryDetailInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576086E3FF45D5B9C9E8559 /* RepositoryDetailInterface.swift */; };
 		3849D19E7CF4D40D61B96071 /* RepositoryListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FE8D74B495B33E548E4E9 /* RepositoryListInteractor.swift */; };
 		599EA2BE57F8B50DADA6D1AB /* RepositoryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC778EDC9E6F1467D3E3439 /* RepositoryDetailPresenter.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		01A123F240508640C043A05A /* RepositoryListRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryListRouter.swift; sourceTree = "<group>"; };
+		17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+extension.swift"; sourceTree = "<group>"; };
 		2ED6066EAC717FF95C82AFDE /* RepositoryListPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryListPresenter.swift; sourceTree = "<group>"; };
 		6576086E3FF45D5B9C9E8559 /* RepositoryDetailInterface.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryDetailInterface.swift; sourceTree = "<group>"; };
 		6C1E62005E396207F2143A02 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				9C863E27210ACF08000D0EE5 /* UIView+extension.swift */,
+				17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -366,7 +369,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = SCI01552;
+				ORGANIZATIONNAME = hicka04;
 				TargetAttributes = {
 					9C9B081B21094ECD000C032F = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -444,6 +447,7 @@
 				78997D130D69886830C2847A /* RepositoryDetailInteractor.swift in Sources */,
 				F3E607BA52977A061330746A /* RepositoryDetailRouter.swift in Sources */,
 				9C863E24210ABEE0000D0EE5 /* RepositoryResultCell.swift in Sources */,
+				17F09BCD2121B055007FEA3A /* UIRefreshControl+extension.swift in Sources */,
 				36BD27A1D2145B3ADEB0B8D4 /* RepositoryDetailInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

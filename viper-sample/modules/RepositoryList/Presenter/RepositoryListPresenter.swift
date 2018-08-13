@@ -41,15 +41,25 @@ class RepositoryListViewPresenter {
         self.interactor = interactor
         self.router = router
     }
+    
+    private func fetchRepositories(searchText: String) {
+        guard !searchText.isEmpty else { return }
+        
+        view?.showRefreshView()
+        
+        interactor.fetchRepositories(keyword: searchText)
+    }
 }
 
 // Presenterのプロトコルに準拠する
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     
-    func searchButtonDidPush(text: String) {
-        guard !text.isEmpty else { return }
-        
-        interactor.fetchRepositories(keyword: text)
+    func searchButtonDidPush(searchText: String) {
+        fetchRepositories(searchText: searchText)
+    }
+    
+    func refreshControlValueChanged(searchText: String) {
+        fetchRepositories(searchText: searchText)
     }
     
     func didSelectRow(at indexPath: IndexPath) {

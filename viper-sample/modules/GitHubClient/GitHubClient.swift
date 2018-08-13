@@ -10,7 +10,7 @@ import Foundation
 
 enum Result<T> {
     case success(T)
-    case failure
+    case failure(Error)
 }
 
 class GitHubClient {
@@ -27,16 +27,16 @@ class GitHubClient {
             switch (data, response, error) {
             case (_, _, let error?):
                 print(error.localizedDescription)
-                completion(.failure)
+                completion(.failure(error))
             case (let data?, let response?, _):
                 do {
                     let response = try request.response(from: data, urlResponse: response)
                     completion(.success(response))
                 } catch {
-                    completion(.failure)
+                    completion(.failure(NSError()))
                 }
             default:
-                completion(.failure)
+                completion(.failure(NSError()))
             }
         }
         

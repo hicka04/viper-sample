@@ -26,7 +26,7 @@ class RepositoryListRouter {
         // 生成し、initの引数で渡す
         let presenter = RepositoryListViewPresenter(view: view, interactor: interactor, router: router)
 
-        interactor.output = presenter // Interactorの通知先を設定
+        interactor.delegate = presenter // Interactorの通知先を設定
         view.presenter = presenter    // ViewにPresenterを設定
 
         return view

@@ -15,6 +15,7 @@ class RepositoryListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     private let cellId = "cellId"
+    private let errorCellId = "errorCellId"
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -22,16 +23,17 @@ class RepositoryListViewController: UIViewController {
         
         return searchBar
     }()
+    
+    private var data: [RepositoryListCellType] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(RepositoryResultCell.createNib(), forCellReuseIdentifier: cellId)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: errorCellId)
         
         searchBar.delegate = self
         navigationItem.titleView = searchBar
-
-        presenter.viewDidLoad() // Viewの読み込みが完了したことを通知
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,7 +46,8 @@ class RepositoryListViewController: UIViewController {
 // Viewのプロトコルに準拠する
 extension RepositoryListViewController: RepositoryListView {
     
-    func reloadData() {
+    func reloadData(_ data: [RepositoryListCellType]) {
+        self.data = data
         tableView.reloadData() // 画面の更新
     }
 }
@@ -56,15 +59,23 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.numberOfRow(in: section)
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RepositoryResultCell
-        let repository = presenter.repository(at: indexPath)
-        cell.setRepository(repository)
-        
-        return cell
+        switch data[indexPath.row] {
+        case .repositoryCell(let repository):
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RepositoryResultCell
+            cell.setRepository(repository)
+            
+            return cell
+        case .errorCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: errorCellId, for: indexPath)
+            cell.textLabel?.text = "エラーが発生しました"
+            cell.isUserInteractionEnabled = false
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

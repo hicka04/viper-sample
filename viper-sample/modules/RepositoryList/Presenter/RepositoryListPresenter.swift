@@ -8,12 +8,33 @@
 
 import Foundation
 
+enum RepositoryListCellType {
+    
+    case repositoryCell(repository: Repository)
+    case errorCell(error: Error)
+}
+
 class RepositoryListViewPresenter {
 
     // View, Interactor, Routerへのアクセスはprotocolを介して行う
     weak var view: RepositoryListView?
     let interactor: RepositoryListUsecase
     let router: RepositoryListWireframe
+    
+    private var repositories: [Repository] = [] {
+        didSet {
+            guard !repositories.isEmpty else { return }
+            
+            cellTypes = repositories.map { repository in
+                RepositoryListCellType.repositoryCell(repository: repository)
+            }
+        }
+    }
+    private var cellTypes: [RepositoryListCellType] = [] {
+        didSet {
+            view?.reloadData(cellTypes)
+        }
+    }
 
     init(view: RepositoryListView, interactor: RepositoryListUsecase, router: RepositoryListWireframe) {
         self.view = view
@@ -24,34 +45,28 @@ class RepositoryListViewPresenter {
 
 // Presenterのプロトコルに準拠する
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
-
-    func viewDidLoad() {
-//        interactor.fetchRepositories(keyword: "swift") // Interactorにデータ取得処理を依頼
-        view?.reloadData()
-    }
     
     func searchTextDidChange(text: String) {
         interactor.fetchRepositories(keyword: text)
     }
     
-    func numberOfRow(in section: Int) -> Int {
-        return interactor.numberOfRepositories
-    }
-    
-    func repository(at indexPath: IndexPath) -> Repository {
-        return interactor.repository(at: indexPath)
-    }
-    
     func didSelectRow(at indexPath: IndexPath) {
-        router.showRepositoryDetail(repository(at: indexPath)) // Routerに画面遷移を依頼
+        guard !repositories.isEmpty else { return }
+        
+        let repository = repositories[indexPath.row]
+        router.showRepositoryDetail(repository) // Routerに画面遷移を依頼
     }
 }
 
 // Interactorからの通知に関するプロトコルに準拠する
-extension RepositoryListViewPresenter: RepositoryListInteractorOutput {
+extension RepositoryListViewPresenter: RepositoryListInteractorDelegate {
 
-    func fetchRepositoriesDidFinish() {
-        view?.reloadData() // データ取得が完了したら画面の更新を依頼
-        print(interactor.numberOfRepositories)
+    func interactor(_ interactor: RepositoryListUsecase, didFetchedRepositories repositories: [Repository]) {
+        self.repositories = repositories
+    }
+    
+    func interactor(_ interactor: RepositoryListUsecase, didFailedWithError error: Error) {
+        repositories.removeAll()
+        cellTypes = [.errorCell(error: error)]
     }
 }

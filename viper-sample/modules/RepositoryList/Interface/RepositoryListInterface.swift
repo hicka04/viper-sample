@@ -11,30 +11,26 @@ import Foundation
 // MARK: - view
 protocol RepositoryListView: class {
 
-    func reloadData()
+    func reloadData(_ data: [RepositoryListCellType])
 }
 
 // MARK: - presenter
 protocol RepositoryListViewPresentable: class {
 
-    func viewDidLoad()
     func searchTextDidChange(text: String)
-    func numberOfRow(in section: Int) -> Int
-    func repository(at indexPath: IndexPath) -> Repository
     func didSelectRow(at indexPath: IndexPath)
 }
 
 // MARK: - interactor
 protocol RepositoryListUsecase: class {
 
-    var numberOfRepositories: Int { get }
-    func repository(at indexPath: IndexPath) -> Repository
     func fetchRepositories(keyword: String)
 }
 
-protocol RepositoryListInteractorOutput: class {
+protocol RepositoryListInteractorDelegate: class {
 
-    func fetchRepositoriesDidFinish()
+    func interactor(_ interactor: RepositoryListUsecase, didFetchedRepositories repositories: [Repository])
+    func interactor(_ interactor: RepositoryListUsecase, didFailedWithError error: Error)
 }
 
 // MARK: - router

@@ -11,22 +11,11 @@ import Foundation
 class RepositoryListInteractor {
 
     // 取得処理が完了したことを通知はprotocolを介して行う
-    weak var output: RepositoryListInteractorOutput?
-
-    private var repositories: [Repository] = []
+    weak var delegate: RepositoryListInteractorDelegate?
 }
 
 // Interactorのプロトコルに準拠する
 extension RepositoryListInteractor: RepositoryListUsecase {
-    
-    // そのままデータを返すパターン
-    var numberOfRepositories: Int {
-        return repositories.count
-    }
-    
-    func repository(at indexPath: IndexPath) -> Repository {
-        return repositories[indexPath.row]
-    }
 
     // 時間がかかるパターン
     func fetchRepositories(keyword: String) {
@@ -36,15 +25,13 @@ extension RepositoryListInteractor: RepositoryListUsecase {
         client.send(request: request) { result in
             switch result {
             case .success(let response):
-                self.repositories = response.items
                 DispatchQueue.main.async {
                     // 取得完了したことを通知
-                    self.output?.fetchRepositoriesDidFinish()
+                    self.delegate?.interactor(self, didFetchedRepositories: response.items)
                 }
-            case .failure:
-                self.repositories.removeAll()
+            case .failure(let error):
                 DispatchQueue.main.async {
-                    self.output?.fetchRepositoriesDidFinish()
+                    self.delegate?.interactor(self, didFailedWithError: error)
                 }
             }
         }

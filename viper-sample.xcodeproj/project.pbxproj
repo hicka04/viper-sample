@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		120631170838919E965E457D /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E62005E396207F2143A02 /* RepositoryDetailViewController.swift */; };
 		17F09BCD2121B055007FEA3A /* UIRefreshControl+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */; };
+		17F09BDE21244E38007FEA3A /* viper-sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDC21244E38007FEA3A /* viper-sample.xcdatamodeld */; };
+		17F09BE021244F5D007FEA3A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDF21244F5D007FEA3A /* CoreDataManager.swift */; };
+		17F09BE221244FD6007FEA3A /* CoreDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BE121244FD6007FEA3A /* CoreDataManagerContract.swift */; };
+		17F09BE3212464DD007FEA3A /* CoreDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BE121244FD6007FEA3A /* CoreDataManagerContract.swift */; };
+		17F09BE4212464F9007FEA3A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDF21244F5D007FEA3A /* CoreDataManager.swift */; };
+		17F09BE521246597007FEA3A /* viper-sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDC21244E38007FEA3A /* viper-sample.xcdatamodeld */; };
 		36BD27A1D2145B3ADEB0B8D4 /* RepositoryDetailInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576086E3FF45D5B9C9E8559 /* RepositoryDetailInterface.swift */; };
 		3849D19E7CF4D40D61B96071 /* RepositoryListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FE8D74B495B33E548E4E9 /* RepositoryListInteractor.swift */; };
 		599EA2BE57F8B50DADA6D1AB /* RepositoryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC778EDC9E6F1467D3E3439 /* RepositoryDetailPresenter.swift */; };
@@ -53,6 +59,9 @@
 /* Begin PBXFileReference section */
 		01A123F240508640C043A05A /* RepositoryListRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryListRouter.swift; sourceTree = "<group>"; };
 		17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+extension.swift"; sourceTree = "<group>"; };
+		17F09BDD21244E38007FEA3A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		17F09BDF21244F5D007FEA3A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		17F09BE121244FD6007FEA3A /* CoreDataManagerContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerContract.swift; sourceTree = "<group>"; };
 		2ED6066EAC717FF95C82AFDE /* RepositoryListPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryListPresenter.swift; sourceTree = "<group>"; };
 		6576086E3FF45D5B9C9E8559 /* RepositoryDetailInterface.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryDetailInterface.swift; sourceTree = "<group>"; };
 		6C1E62005E396207F2143A02 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
@@ -143,9 +152,20 @@
 		17F09BD22121C15D007FEA3A /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				17F09BDB21244DEC007FEA3A /* CoreData */,
 				9C7CF38321097B2900867F33 /* GitHubClient */,
 			);
 			path = utilities;
+			sourceTree = "<group>";
+		};
+		17F09BDB21244DEC007FEA3A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				17F09BE121244FD6007FEA3A /* CoreDataManagerContract.swift */,
+				17F09BDF21244F5D007FEA3A /* CoreDataManager.swift */,
+				17F09BDC21244E38007FEA3A /* viper-sample.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		1CEC41CD6E35048813AC1EDD /* Interface */ = {
@@ -447,6 +467,7 @@
 				92826D0522877E0EC4034E38 /* RepositoryListViewController.swift in Sources */,
 				5E2ECE9865EC53AA33E7C6D2 /* RepositoryListPresenter.swift in Sources */,
 				3849D19E7CF4D40D61B96071 /* RepositoryListInteractor.swift in Sources */,
+				17F09BE021244F5D007FEA3A /* CoreDataManager.swift in Sources */,
 				9C863E28210ACF08000D0EE5 /* UIView+extension.swift in Sources */,
 				C74D51C236F6E7695C0193C4 /* RepositoryListRouter.swift in Sources */,
 				FB4F02B750DC48A07B5AF65C /* RepositoryListInterface.swift in Sources */,
@@ -454,7 +475,9 @@
 				599EA2BE57F8B50DADA6D1AB /* RepositoryDetailPresenter.swift in Sources */,
 				78997D130D69886830C2847A /* RepositoryDetailInteractor.swift in Sources */,
 				F3E607BA52977A061330746A /* RepositoryDetailRouter.swift in Sources */,
+				17F09BDE21244E38007FEA3A /* viper-sample.xcdatamodeld in Sources */,
 				9C863E24210ABEE0000D0EE5 /* RepositoryResultCell.swift in Sources */,
+				17F09BE221244FD6007FEA3A /* CoreDataManagerContract.swift in Sources */,
 				17F09BCD2121B055007FEA3A /* UIRefreshControl+extension.swift in Sources */,
 				36BD27A1D2145B3ADEB0B8D4 /* RepositoryDetailInterface.swift in Sources */,
 			);
@@ -464,11 +487,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17F09BE521246597007FEA3A /* viper-sample.xcdatamodeld in Sources */,
 				9CBCCE3C210FD7BC00C27E95 /* User.swift in Sources */,
+				17F09BE3212464DD007FEA3A /* CoreDataManagerContract.swift in Sources */,
 				9CBCCE39210FD58400C27E95 /* RepositoryListPresenterTest.swift in Sources */,
 				9CBCCE3E210FD7C100C27E95 /* SearchResponse.swift in Sources */,
 				9CBCCE3D210FD7BF00C27E95 /* Repository.swift in Sources */,
 				9CBCCE3A210FD62700C27E95 /* RepositoryListInterface.swift in Sources */,
+				17F09BE4212464F9007FEA3A /* CoreDataManager.swift in Sources */,
 				9CBCCE3B210FD62D00C27E95 /* RepositoryListPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,6 +732,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		17F09BDC21244E38007FEA3A /* viper-sample.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				17F09BDD21244E38007FEA3A /* Model.xcdatamodel */,
+			);
+			currentVersion = 17F09BDD21244E38007FEA3A /* Model.xcdatamodel */;
+			path = "viper-sample.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9C9B081421094ECD000C032F /* Project object */;
 }

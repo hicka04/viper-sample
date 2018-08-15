@@ -140,6 +140,14 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		17F09BD22121C15D007FEA3A /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9C7CF38321097B2900867F33 /* GitHubClient */,
+			);
+			path = utilities;
+			sourceTree = "<group>";
+		};
 		1CEC41CD6E35048813AC1EDD /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				17F09BCB211EA09F007FEA3A /* Root */,
-				9C7CF38321097B2900867F33 /* GitHubClient */,
 				2E9607551792C57BD2D08C1E /* RepositoryList */,
 				15715F26DC1D6115F4D56399 /* RepositoryDetail */,
 			);
@@ -256,6 +263,7 @@
 				17F09BC9211EA022007FEA3A /* application */,
 				9C7CF38221095B4E00867F33 /* modules */,
 				9C7CF38421097B5E00867F33 /* enitities */,
+				17F09BD22121C15D007FEA3A /* utilities */,
 				9C863E26210ACEDF000D0EE5 /* extensions */,
 				17F09BCA211EA06E007FEA3A /* resources */,
 			);

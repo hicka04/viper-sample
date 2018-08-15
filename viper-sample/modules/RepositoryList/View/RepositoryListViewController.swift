@@ -39,6 +39,8 @@ class RepositoryListViewController: UIViewController {
         
         searchBar.delegate = self
         navigationItem.titleView = searchBar
+        
+        presenter.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,6 +58,10 @@ class RepositoryListViewController: UIViewController {
 
 // Viewのプロトコルに準拠する
 extension RepositoryListViewController: RepositoryListView {
+    
+    func setLastSearchText(_ text: String) {
+        searchBar.text = text
+    }
     
     func showRefreshView() {
         guard !refreshControl.isRefreshing else { return }

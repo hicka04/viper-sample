@@ -11,6 +11,7 @@ import Foundation
 // MARK: - view
 protocol RepositoryListView: class {
 
+    func setLastSearchText(_ text: String)
     func showRefreshView()
     func reloadData(_ data: [RepositoryListCellType])
 }
@@ -18,6 +19,7 @@ protocol RepositoryListView: class {
 // MARK: - presenter
 protocol RepositoryListViewPresentable: class {
 
+    func viewDidLoad()
     func searchButtonDidPush(searchText: String)
     func refreshControlValueChanged(searchText: String)
     func didSelectRow(at indexPath: IndexPath)

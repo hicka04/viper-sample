@@ -17,9 +17,24 @@ enum RepositoryListCellType {
 class RepositoryListViewPresenter {
 
     // View, Interactor, Routerへのアクセスはprotocolを介して行う
-    weak var view: RepositoryListView?
-    let interactor: RepositoryListUsecase
-    let router: RepositoryListWireframe
+    private weak var view: RepositoryListView?
+    private let interactor: RepositoryListUsecase
+    private let router: RepositoryListWireframe
+    private let userDefaults: UserDefaults
+    
+    private let searchTextKey = "searchText"
+    private var searchText: String {
+        set {
+            guard !newValue.isEmpty else { return }
+            
+            userDefaults.set(newValue, forKey: searchTextKey)
+            
+            fetchRepositories()
+        }
+        get {
+            return userDefaults.string(forKey: searchTextKey) ?? ""
+        }
+    }
     
     private var repositories: [Repository] = [] {
         didSet {
@@ -36,17 +51,15 @@ class RepositoryListViewPresenter {
         }
     }
 
-    init(view: RepositoryListView, interactor: RepositoryListUsecase, router: RepositoryListWireframe) {
+    init(view: RepositoryListView, interactor: RepositoryListUsecase, router: RepositoryListWireframe, userDefaults: UserDefaults = UserDefaults.standard) {
         self.view = view
         self.interactor = interactor
         self.router = router
+        self.userDefaults = userDefaults
     }
     
-    private func fetchRepositories(searchText: String) {
-        guard !searchText.isEmpty else { return }
-        
+    private func fetchRepositories() {
         view?.showRefreshView()
-        
         interactor.fetchRepositories(keyword: searchText)
     }
 }
@@ -54,12 +67,17 @@ class RepositoryListViewPresenter {
 // Presenterのプロトコルに準拠する
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     
+    func viewDidLoad() {
+        view?.setLastSearchText(searchText)
+        fetchRepositories()
+    }
+    
     func searchButtonDidPush(searchText: String) {
-        fetchRepositories(searchText: searchText)
+        self.searchText = searchText
     }
     
     func refreshControlValueChanged(searchText: String) {
-        fetchRepositories(searchText: searchText)
+        self.searchText = searchText
     }
     
     func didSelectRow(at indexPath: IndexPath) {

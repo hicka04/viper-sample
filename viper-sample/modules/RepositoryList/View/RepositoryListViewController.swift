@@ -16,6 +16,7 @@ class RepositoryListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     private let cellId = "cellId"
     private let errorCellId = "errorCellId"
+    private let noHisotryCellId = "noHisotryCellId"
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -33,6 +34,7 @@ class RepositoryListViewController: UIViewController {
         
         tableView.register(RepositoryResultCell.createNib(), forCellReuseIdentifier: cellId)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: errorCellId)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: noHisotryCellId)
         
         refreshControl.addTarget(self, action: #selector(refreshControlValueChanged(sender:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
@@ -99,6 +101,12 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
         case .errorCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: errorCellId, for: indexPath)
             cell.textLabel?.text = "エラーが発生しました"
+            cell.isUserInteractionEnabled = false
+            
+            return cell
+        case .noHistoryCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: noHisotryCellId, for: indexPath)
+            cell.textLabel?.text = "↑にキーワードを入れてリポジトリを検索"
             cell.isUserInteractionEnabled = false
             
             return cell

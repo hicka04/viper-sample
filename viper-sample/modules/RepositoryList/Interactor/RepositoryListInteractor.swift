@@ -16,6 +16,29 @@ class RepositoryListInteractor {
 
 // Interactorのプロトコルに準拠する
 extension RepositoryListInteractor: RepositoryListUsecase {
+    
+    enum SearchTextLoadError: Error {
+        case noResult
+        case other
+    }
+    
+    func loadLastSearchText() {
+        let sortDescriptor = NSSortDescriptor(key: "lastSearchAt", ascending: false)
+        guard let results = SearchHistory.select(orderBy: [sortDescriptor], limit: 1) else {
+            delegate?.interactor(self, didFailedLoadLastSearchTextWithError: SearchTextLoadError.other)
+            return
+        }
+        guard !results.isEmpty else {
+            delegate?.interactor(self, didFailedLoadLastSearchTextWithError: SearchTextLoadError.noResult)
+            return
+        }
+        guard let searchText = results[0].searchText else {
+            delegate?.interactor(self, didFailedLoadLastSearchTextWithError: SearchTextLoadError.other)
+            return
+        }
+        
+        delegate?.interactor(self, didFinishLoad: searchText)
+    }
 
     // 時間がかかるパターン
     func fetchRepositories(keyword: String) {
@@ -34,6 +57,12 @@ extension RepositoryListInteractor: RepositoryListUsecase {
                     self.delegate?.interactor(self, didFailedWithError: error)
                 }
             }
+        }
+        
+        SearchHistory.insert { entity in
+            entity.searchText = keyword
+            entity.firstSearchAt = Date()
+            entity.lastSearchAt = Date()
         }
     }
 }

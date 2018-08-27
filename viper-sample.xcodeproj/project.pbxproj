@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		120631170838919E965E457D /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E62005E396207F2143A02 /* RepositoryDetailViewController.swift */; };
+		173E04C421310F620000C1C5 /* NSFetchRequestResult+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E04C321310F620000C1C5 /* NSFetchRequestResult+extension.swift */; };
+		17D7606021246F44007B876E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B081F21094ECE000C032F /* AppDelegate.swift */; };
 		17F09BCD2121B055007FEA3A /* UIRefreshControl+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */; };
 		17F09BDE21244E38007FEA3A /* viper-sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDC21244E38007FEA3A /* viper-sample.xcdatamodeld */; };
 		17F09BE021244F5D007FEA3A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDF21244F5D007FEA3A /* CoreDataManager.swift */; };
 		17F09BE221244FD6007FEA3A /* CoreDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BE121244FD6007FEA3A /* CoreDataManagerContract.swift */; };
 		17F09BE3212464DD007FEA3A /* CoreDataManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BE121244FD6007FEA3A /* CoreDataManagerContract.swift */; };
 		17F09BE4212464F9007FEA3A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDF21244F5D007FEA3A /* CoreDataManager.swift */; };
-		17F09BE521246597007FEA3A /* viper-sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDC21244E38007FEA3A /* viper-sample.xcdatamodeld */; };
 		36BD27A1D2145B3ADEB0B8D4 /* RepositoryDetailInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576086E3FF45D5B9C9E8559 /* RepositoryDetailInterface.swift */; };
 		3849D19E7CF4D40D61B96071 /* RepositoryListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901FE8D74B495B33E548E4E9 /* RepositoryListInteractor.swift */; };
 		599EA2BE57F8B50DADA6D1AB /* RepositoryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC778EDC9E6F1467D3E3439 /* RepositoryDetailPresenter.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		01A123F240508640C043A05A /* RepositoryListRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryListRouter.swift; sourceTree = "<group>"; };
+		173E04C321310F620000C1C5 /* NSFetchRequestResult+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchRequestResult+extension.swift"; sourceTree = "<group>"; };
 		17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+extension.swift"; sourceTree = "<group>"; };
 		17F09BDD21244E38007FEA3A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		17F09BDF21244F5D007FEA3A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				9C863E27210ACF08000D0EE5 /* UIView+extension.swift */,
 				17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */,
+				173E04C321310F620000C1C5 /* NSFetchRequestResult+extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				92826D0522877E0EC4034E38 /* RepositoryListViewController.swift in Sources */,
 				5E2ECE9865EC53AA33E7C6D2 /* RepositoryListPresenter.swift in Sources */,
 				3849D19E7CF4D40D61B96071 /* RepositoryListInteractor.swift in Sources */,
+				173E04C421310F620000C1C5 /* NSFetchRequestResult+extension.swift in Sources */,
 				17F09BE021244F5D007FEA3A /* CoreDataManager.swift in Sources */,
 				9C863E28210ACF08000D0EE5 /* UIView+extension.swift in Sources */,
 				C74D51C236F6E7695C0193C4 /* RepositoryListRouter.swift in Sources */,
@@ -487,7 +491,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17F09BE521246597007FEA3A /* viper-sample.xcdatamodeld in Sources */,
 				9CBCCE3C210FD7BC00C27E95 /* User.swift in Sources */,
 				17F09BE3212464DD007FEA3A /* CoreDataManagerContract.swift in Sources */,
 				9CBCCE39210FD58400C27E95 /* RepositoryListPresenterTest.swift in Sources */,
@@ -495,6 +498,7 @@
 				9CBCCE3D210FD7BF00C27E95 /* Repository.swift in Sources */,
 				9CBCCE3A210FD62700C27E95 /* RepositoryListInterface.swift in Sources */,
 				17F09BE4212464F9007FEA3A /* CoreDataManager.swift in Sources */,
+				17D7606021246F44007B876E /* AppDelegate.swift in Sources */,
 				9CBCCE3B210FD62D00C27E95 /* RepositoryListPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

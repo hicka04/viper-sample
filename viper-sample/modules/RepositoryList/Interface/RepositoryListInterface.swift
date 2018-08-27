@@ -28,10 +28,14 @@ protocol RepositoryListViewPresentable: class {
 // MARK: - interactor
 protocol RepositoryListUsecase: class {
 
+    func loadLastSearchText()
     func fetchRepositories(keyword: String)
 }
 
 protocol RepositoryListInteractorDelegate: class {
+    
+    func interactor(_ interactor: RepositoryListUsecase, didFinishLoad lastSearchText: String)
+    func interactor(_ interactor: RepositoryListUsecase, didFailedLoadLastSearchTextWithError error: Error)
 
     func interactor(_ interactor: RepositoryListUsecase, didFetchedRepositories repositories: [Repository])
     func interactor(_ interactor: RepositoryListUsecase, didFailedWithError error: Error)

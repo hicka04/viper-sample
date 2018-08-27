@@ -12,6 +12,7 @@ enum RepositoryListCellType {
     
     case repositoryCell(repository: Repository)
     case errorCell(error: Error)
+    case noHistoryCell
 }
 
 class RepositoryListViewPresenter {
@@ -20,19 +21,13 @@ class RepositoryListViewPresenter {
     private weak var view: RepositoryListView?
     private let interactor: RepositoryListUsecase
     private let router: RepositoryListWireframe
-    private let userDefaults: UserDefaults
-    
-    private let searchTextKey = "searchText"
-    private var searchText: String {
-        set {
-            guard !newValue.isEmpty else { return }
+    private var searchText: String = "" {
+        didSet {
+            guard !searchText.isEmpty else { return }
             
-            userDefaults.set(newValue, forKey: searchTextKey)
-            
-            fetchRepositories()
-        }
-        get {
-            return userDefaults.string(forKey: searchTextKey) ?? ""
+            view?.setLastSearchText(searchText)
+            view?.showRefreshView()
+            interactor.fetchRepositories(keyword: searchText)
         }
     }
     
@@ -51,16 +46,10 @@ class RepositoryListViewPresenter {
         }
     }
 
-    init(view: RepositoryListView, interactor: RepositoryListUsecase, router: RepositoryListWireframe, userDefaults: UserDefaults = UserDefaults.standard) {
+    init(view: RepositoryListView, interactor: RepositoryListUsecase, router: RepositoryListWireframe) {
         self.view = view
         self.interactor = interactor
         self.router = router
-        self.userDefaults = userDefaults
-    }
-    
-    private func fetchRepositories() {
-        view?.showRefreshView()
-        interactor.fetchRepositories(keyword: searchText)
     }
 }
 
@@ -68,8 +57,7 @@ class RepositoryListViewPresenter {
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     
     func viewDidLoad() {
-        view?.setLastSearchText(searchText)
-        fetchRepositories()
+        interactor.loadLastSearchText()
     }
     
     func searchButtonDidPush(searchText: String) {
@@ -90,6 +78,14 @@ extension RepositoryListViewPresenter: RepositoryListViewPresentable {
 
 // Interactorからの通知に関するプロトコルに準拠する
 extension RepositoryListViewPresenter: RepositoryListInteractorDelegate {
+    
+    func interactor(_ interactor: RepositoryListUsecase, didFinishLoad lastSearchText: String) {
+        searchText = lastSearchText
+    }
+    
+    func interactor(_ interactor: RepositoryListUsecase, didFailedLoadLastSearchTextWithError error: Error) {
+        cellTypes = [.noHistoryCell]
+    }
 
     func interactor(_ interactor: RepositoryListUsecase, didFetchedRepositories repositories: [Repository]) {
         self.repositories = repositories

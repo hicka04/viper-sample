@@ -17,27 +17,16 @@ class RepositoryListInteractor {
 // Interactorのプロトコルに準拠する
 extension RepositoryListInteractor: RepositoryListUsecase {
     
-    enum SearchTextLoadError: Error {
-        case noResult
-        case other
-    }
-    
     func loadLastSearchText() {
         let sortDescriptor = NSSortDescriptor(key: "lastSearchAt", ascending: false)
-        guard let results = SearchHistory.select(orderBy: [sortDescriptor], limit: 1) else {
-            delegate?.interactor(self, didFailedLoadLastSearchTextWithError: SearchTextLoadError.other)
-            return
-        }
-        guard !results.isEmpty else {
-            delegate?.interactor(self, didFailedLoadLastSearchTextWithError: SearchTextLoadError.noResult)
-            return
-        }
-        guard let searchText = results[0].searchText else {
-            delegate?.interactor(self, didFailedLoadLastSearchTextWithError: SearchTextLoadError.other)
+        guard let results = SearchHistory.select(orderBy: [sortDescriptor], limit: 1),
+            !results.isEmpty,
+            let searchText = results[0].searchText else {
+            delegate?.interactor(self, lastSearchTextLoadState: .error)
             return
         }
         
-        delegate?.interactor(self, didFinishLoad: searchText)
+        delegate?.interactor(self, lastSearchTextLoadState: .result(searchText: searchText))
     }
 
     // 時間がかかるパターン

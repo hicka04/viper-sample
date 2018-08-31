@@ -79,12 +79,13 @@ extension RepositoryListViewPresenter: RepositoryListViewPresentable {
 // Interactorからの通知に関するプロトコルに準拠する
 extension RepositoryListViewPresenter: RepositoryListInteractorDelegate {
     
-    func interactor(_ interactor: RepositoryListUsecase, didFinishLoad lastSearchText: String) {
-        searchText = lastSearchText
-    }
-    
-    func interactor(_ interactor: RepositoryListUsecase, didFailedLoadLastSearchTextWithError error: Error) {
-        cellTypes = [.noHistoryCell]
+    func interactor(_ interactor: RepositoryListUsecase, lastSearchTextLoadState state: SearchTextLoadState) {
+        switch state {
+        case .result(let searchText):
+            self.searchText = searchText
+        case .error:
+            cellTypes = [.noHistoryCell]
+        }
     }
 
     func interactor(_ interactor: RepositoryListUsecase, didFetchedRepositories repositories: [Repository]) {

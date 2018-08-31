@@ -34,8 +34,7 @@ protocol RepositoryListUsecase: class {
 
 protocol RepositoryListInteractorDelegate: class {
     
-    func interactor(_ interactor: RepositoryListUsecase, didFinishLoad lastSearchText: String)
-    func interactor(_ interactor: RepositoryListUsecase, didFailedLoadLastSearchTextWithError error: Error)
+    func interactor(_ interactor: RepositoryListUsecase, lastSearchTextLoadState state: SearchTextLoadState)
 
     func interactor(_ interactor: RepositoryListUsecase, didFetchedRepositories repositories: [Repository])
     func interactor(_ interactor: RepositoryListUsecase, didFailedWithError error: Error)
@@ -45,4 +44,9 @@ protocol RepositoryListInteractorDelegate: class {
 protocol RepositoryListWireframe: class {
 
     func showRepositoryDetail(_ repository: Repository)
+}
+
+enum SearchTextLoadState {
+    case result(searchText: String)
+    case error
 }

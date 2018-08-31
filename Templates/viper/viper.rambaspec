@@ -20,8 +20,8 @@ code_files:
 # Router layer
 - {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
 
-# Interface
-- {name: Interface/Interface.swift, path: Code/Interface/interface.swift.liquid}
+# Contract
+- {name: Contract/Contract.swift, path: Code/Contract/contract.swift.liquid}
 
 # The declarations for test files
 #test_files:

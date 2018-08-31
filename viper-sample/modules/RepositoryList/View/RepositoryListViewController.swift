@@ -27,7 +27,15 @@ class RepositoryListViewController: UIViewController {
     
     private let refreshControl = UIRefreshControl()
     
-    private var data: [RepositoryListCellType] = []
+    private var cells: [RepositoryListCellType] = [] {
+        didSet {
+            tableView.reloadData() // 画面の更新
+            
+            if refreshControl.isRefreshing {
+                refreshControl.endRefreshing()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,12 +80,7 @@ extension RepositoryListViewController: RepositoryListView {
     }
     
     func reloadData(_ data: [RepositoryListCellType]) {
-        self.data = data
-        tableView.reloadData() // 画面の更新
-        
-        if refreshControl.isRefreshing {
-            refreshControl.endRefreshing()
-        }
+        self.cells = data
     }
 }
 
@@ -88,11 +91,11 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch data[indexPath.row] {
+        switch cells[indexPath.row] {
         case .repositoryCell(let repository):
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RepositoryResultCell
             cell.setRepository(repository)

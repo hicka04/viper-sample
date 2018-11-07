@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		120631170838919E965E457D /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E62005E396207F2143A02 /* RepositoryDetailViewController.swift */; };
 		173E04C421310F620000C1C5 /* NSFetchRequestResult+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E04C321310F620000C1C5 /* NSFetchRequestResult+extension.swift */; };
-		17D7606021246F44007B876E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B081F21094ECE000C032F /* AppDelegate.swift */; };
 		17F09BCD2121B055007FEA3A /* UIRefreshControl+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BCC2121B055007FEA3A /* UIRefreshControl+extension.swift */; };
 		17F09BDE21244E38007FEA3A /* viper-sample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17F09BDC21244E38007FEA3A /* viper-sample.xcdatamodeld */; };
 		36BD27A1D2145B3ADEB0B8D4 /* RepositoryDetailContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6576086E3FF45D5B9C9E8559 /* RepositoryDetailContract.swift */; };
@@ -478,7 +477,6 @@
 				9CBCCE3E210FD7C100C27E95 /* SearchResponse.swift in Sources */,
 				9CBCCE3D210FD7BF00C27E95 /* Repository.swift in Sources */,
 				9CBCCE3A210FD62700C27E95 /* RepositoryListContract.swift in Sources */,
-				17D7606021246F44007B876E /* AppDelegate.swift in Sources */,
 				9CBCCE3B210FD62D00C27E95 /* RepositoryListPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,45 +29,83 @@ class RepositoryListPresenterTest: XCTestCase {
     
     func test_viewDidLoad() {
         // PresenterにviewDidLoadのイベントが届いたときの挙動をテスト
-        // Interactorにリポジトリ一覧を取得するよう依頼する実装にしたので、
+        // Interactorに最後の検索文字列を取得するよう依頼する実装にしたので、
         // 正しく依頼されているかチェック
-        XCTAssertFalse(interactor.isCalled_fetchRepositories)
-        presenter.viewDidLoad()
-        XCTAssertTrue(interactor.isCalled_fetchRepositories)
+        XCTContext.runActivity(named: "viewDidLoadが呼ばれたとき") { _ in
+            let before = interactor.callCount_loadLastSearchText
+            presenter.viewDidLoad()
+            
+            XCTContext.runActivity(named: "最後の検索文字列の取得が実行されるか") { _ in
+                XCTAssertEqual(before + 1, interactor.callCount_loadLastSearchText)
+            }
+        }
     }
     
     func test_fetchRepositoriesDidFinish() {
         // Presenterにリポジトリ一覧の取得完了イベントが届いたときの挙動テスト
         // イベントを受け取ったらViewに再描画を依頼するよう実装したので、
         // 正しく依頼されているかチェック
-        XCTAssertFalse(view.isCalled_reloadData)
-        presenter.fetchRepositoriesDidFinish()
-        XCTAssertTrue(view.isCalled_reloadData)
+        XCTContext.runActivity(named: "リポジトリ一覧の取得が完了したとき") { _ in
+            let before = view.callCount_reloadData
+            
+            XCTContext.runActivity(named: "取得結果が0件だったら") { _ in
+                presenter.interactor(interactor, didFetchedRepositories: [])
+                XCTContext.runActivity(named: "画面の再描画が実行されない") { _ in
+                    XCTAssertEqual(before, view.callCount_reloadData)
+                }
+            }
+            
+            XCTContext.runActivity(named: "取得結果が1件以上だったら") { _ in
+                let data = """
+                            {
+                            "id": 44838949,
+                            "name": "swift",
+                            "full_name": "apple/swift",
+                            "owner": {
+                            "login": "apple",
+                            "id": 10639145
+                            },
+                            "html_url": "https://github.com/apple/swift",
+                            "stargazers_count": 45700
+                            }
+                            """.data(using: .utf8)!
+                let repository = try! JSONDecoder().decode(Repository.self, from: data)
+                presenter.interactor(interactor, didFetchedRepositories: [repository])
+                XCTContext.runActivity(named: "画面の再描画が実行される") { _ in
+                    XCTAssertEqual(before + 1, view.callCount_reloadData)
+                }
+            }
+        }
     }
     
     // MARK: mock
     class ViewMock: RepositoryListView {
         
-        var isCalled_reloadData = false
+        var callCount_setLastSearchText = 0
+        func setLastSearchText(_ text: String) {
+            callCount_setLastSearchText += 1
+        }
         
-        func reloadData() {
-            isCalled_reloadData = true
+        var callCount_showRefreshView = 0
+        func showRefreshView() {
+            callCount_showRefreshView += 1
+        }
+        
+        var callCount_reloadData = 0
+        func reloadData(_ data: [RepositoryListCellType]) {
+            callCount_reloadData += 1
         }
     }
     
     class InteractorMock: RepositoryListUsecase {
-        
-        var isCalled_fetchRepositories = false
-        
-        var numberOfRepositories: Int = 0
-        
-        func repository(at indexPath: IndexPath) -> Repository {
-            let user = User(id: 1, login: "apple")
-            return Repository(id: 1, name: "swift", fullName: "apple/swift", htmlURL: URL(string: "https://www.google.com")!, starCount: 1000, owner: user)
+        var callCount_loadLastSearchText = 0
+        func loadLastSearchText() {
+            callCount_loadLastSearchText += 1
         }
         
+        var callCount_fetchRepositories = false
         func fetchRepositories(keyword: String) {
-            isCalled_fetchRepositories = true
+            callCount_fetchRepositories = true
         }
     }
     

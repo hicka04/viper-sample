@@ -33,6 +33,7 @@
 		9CBCCE3C210FD7BC00C27E95 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38621097B8700867F33 /* User.swift */; };
 		9CBCCE3D210FD7BF00C27E95 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38821097BD400867F33 /* Repository.swift */; };
 		9CBCCE3E210FD7C100C27E95 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38A21097C8200867F33 /* SearchResponse.swift */; };
+		B86F6BF622DEF28500FF639E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86F6BF522DEF28500FF639E /* WebKit.framework */; };
 		B8B4F51722DE9EEA00146E74 /* SearchHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F51622DE9EEA00146E74 /* SearchHistoryInteractor.swift */; };
 		B8B4F51A22DEA29B00146E74 /* SearchRepositoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F51922DEA29B00146E74 /* SearchRepositoryInteractor.swift */; };
 		C74D51C236F6E7695C0193C4 /* RepositoryListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A123F240508640C043A05A /* RepositoryListRouter.swift */; };
@@ -78,6 +79,7 @@
 		9CBCCE38210FD58400C27E95 /* RepositoryListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListPresenterTest.swift; sourceTree = "<group>"; };
 		9CBCCE3F210FDBBF00C27E95 /* viper-sampleTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "viper-sampleTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A71785CB8F36C79CD7B99122 /* RepositoryListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryListViewController.swift; sourceTree = "<group>"; };
+		B86F6BF522DEF28500FF639E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B8B4F51622DE9EEA00146E74 /* SearchHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryInteractor.swift; sourceTree = "<group>"; };
 		B8B4F51922DEA29B00146E74 /* SearchRepositoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryInteractor.swift; sourceTree = "<group>"; };
 		FBD161EEEC3FD4DADCB914E8 /* RepositoryDetailRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryDetailRouter.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B86F6BF622DEF28500FF639E /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +221,7 @@
 				9C9B081E21094ECD000C032F /* viper-sample */,
 				9CBCCE2E210FD50C00C27E95 /* viper-sampleTests */,
 				9C9B081D21094ECD000C032F /* Products */,
+				B86F6BF422DEF28500FF639E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -251,6 +255,14 @@
 				9CBCCE3F210FDBBF00C27E95 /* viper-sampleTests-Bridging-Header.h */,
 			);
 			path = "viper-sampleTests";
+			sourceTree = "<group>";
+		};
+		B86F6BF422DEF28500FF639E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B86F6BF522DEF28500FF639E /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B8B4F51222DE9DE600146E74 /* data */ = {

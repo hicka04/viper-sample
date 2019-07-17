@@ -29,10 +29,12 @@ class RepositoryListViewController: UIViewController {
     
     private var cells: [RepositoryListCellType] = [] {
         didSet {
-            tableView.reloadData() // 画面の更新
-            
-            if refreshControl.isRefreshing {
-                refreshControl.endRefreshing()
+            DispatchQueue.main.async {
+                self.tableView.reloadData() // 画面の更新
+                
+                if self.refreshControl.isRefreshing {
+                    self.refreshControl.endRefreshing()
+                }
             }
         }
     }

@@ -19,15 +19,24 @@ class RepositoryListViewPresenter {
 
     // View, Interactor, Routerへのアクセスはprotocolを介して行う
     private weak var view: RepositoryListView?
-    private let interactor: RepositoryListUsecase
     private let router: RepositoryListWireframe
+    private let historyInteractor: SearchHistoryUsecase
+    private let repositoryInteractor: SearchRepositoryUsecase
     private var searchText: String = "" {
         didSet {
             guard !searchText.isEmpty else { return }
             
             view?.setLastSearchText(searchText)
             view?.showRefreshView()
-            interactor.fetchRepositories(keyword: searchText)
+            repositoryInteractor.fetchRepositories(keyword: searchText) { result in
+                switch result {
+                case .success(let repositories):
+                    self.repositories = repositories
+                case .failure(let error):
+                    self.repositories.removeAll()
+                    self.cellTypes = [.errorCell(error: error)]
+                }
+            }
         }
     }
     
@@ -46,10 +55,14 @@ class RepositoryListViewPresenter {
         }
     }
 
-    init(view: RepositoryListView, interactor: RepositoryListUsecase, router: RepositoryListWireframe) {
+    init(view: RepositoryListView,
+         router: RepositoryListWireframe,
+         historyInteractor: SearchHistoryUsecase,
+         repositoryInteractor: SearchRepositoryUsecase) {
         self.view = view
-        self.interactor = interactor
         self.router = router
+        self.historyInteractor = historyInteractor
+        self.repositoryInteractor = repositoryInteractor
     }
 }
 
@@ -57,7 +70,14 @@ class RepositoryListViewPresenter {
 extension RepositoryListViewPresenter: RepositoryListViewPresentable {
     
     func viewDidLoad() {
-        interactor.loadLastSearchText()
+        historyInteractor.loadLastSeachText { result in
+            switch result {
+            case .success(let searchText):
+                self.searchText = searchText
+            case .failure:
+                cellTypes = [.noHistoryCell]
+            }
+        }
     }
     
     func searchButtonDidPush(searchText: String) {
@@ -73,27 +93,5 @@ extension RepositoryListViewPresenter: RepositoryListViewPresentable {
         
         let repository = repositories[indexPath.row]
         router.showRepositoryDetail(repository) // Routerに画面遷移を依頼
-    }
-}
-
-// Interactorからの通知に関するプロトコルに準拠する
-extension RepositoryListViewPresenter: RepositoryListInteractorDelegate {
-    
-    func interactor(_ interactor: RepositoryListUsecase, lastSearchTextLoadState state: SearchTextLoadState) {
-        switch state {
-        case .result(let searchText):
-            self.searchText = searchText
-        case .error:
-            cellTypes = [.noHistoryCell]
-        }
-    }
-
-    func interactor(_ interactor: RepositoryListUsecase, didFetchedRepositories repositories: [Repository]) {
-        self.repositories = repositories
-    }
-    
-    func interactor(_ interactor: RepositoryListUsecase, didFailedWithError error: Error) {
-        repositories.removeAll()
-        cellTypes = [.errorCell(error: error)]
     }
 }

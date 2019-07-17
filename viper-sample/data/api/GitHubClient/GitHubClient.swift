@@ -8,20 +8,28 @@
 
 import Foundation
 
-enum Result<T> {
-    case success(T)
-    case failure(Error)
+protocol GitHubRequestable: AnyObject {
+    
+    func send<Request: GitHubRequest>(request: Request, completion: @escaping (Result<Request.Response, Error>) -> ())
 }
 
 class GitHubClient {
 
-    private let session: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration)
-        return session
-    }()
+    private let session: URLSession
     
-    func send<Request: GitHubRequest>(request: Request, completion: @escaping (Result<Request.Response>) -> ()) {
+    init(session: URLSession = {
+            let configuration = URLSessionConfiguration.default
+            let session = URLSession(configuration: configuration)
+            return session
+        }()
+    ) {
+        self.session = session
+    }
+}
+
+extension GitHubClient: GitHubRequestable {
+    
+    func send<Request: GitHubRequest>(request: Request, completion: @escaping (Result<Request.Response, Error>) -> ()) {
         let urlRequest = request.buildURLRequest()
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             switch (data, response, error) {

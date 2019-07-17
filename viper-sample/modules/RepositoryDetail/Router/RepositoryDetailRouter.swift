@@ -18,11 +18,9 @@ class RepositoryDetailRouter {
 
     static func assembleModules(repository: Repository) -> UIViewController {
         let view = RepositoryDetailViewController()
-        let interactor = RepositoryDetailInteractor()
         let router = RepositoryDetailRouter(viewController: view)
-        let presenter = RepositoryDetailViewPresenter(view: view, interactor: interactor, router: router, repository: repository)
+        let presenter = RepositoryDetailViewPresenter(view: view, router: router, repository: repository)
 
-        interactor.output = presenter
         view.presenter = presenter
 
         return view

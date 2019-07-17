@@ -10,14 +10,12 @@ import Foundation
 
 class RepositoryDetailViewPresenter {
 
-    weak var view: RepositoryDetailView?
-    let interactor: RepositoryDetailUsecase
-    let router: RepositoryDetailWireframe
-    let repository: Repository
+    private weak var view: RepositoryDetailView?
+    private let router: RepositoryDetailWireframe
+    private let repository: Repository
 
-    init(view: RepositoryDetailView, interactor: RepositoryDetailUsecase, router: RepositoryDetailWireframe, repository: Repository) {
+    init(view: RepositoryDetailView, router: RepositoryDetailWireframe, repository: Repository) {
         self.view = view
-        self.interactor = interactor
         self.router = router
         self.repository = repository
     }
@@ -28,8 +26,4 @@ extension RepositoryDetailViewPresenter: RepositoryDetailViewPresentable {
     func viewDidLoad() {
         view?.load(request: URLRequest(url: repository.htmlURL))
     }
-}
-
-extension RepositoryDetailViewPresenter: RepositoryDetailInteractorOutput {
-
 }

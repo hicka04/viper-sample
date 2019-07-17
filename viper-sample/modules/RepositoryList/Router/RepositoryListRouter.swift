@@ -20,13 +20,16 @@ class RepositoryListRouter {
     // 依存関係の解決をしている
     static func assembleModules() -> UIViewController {
         let view = RepositoryListViewController()
-        let interactor = RepositoryListInteractor()
         let router = RepositoryListRouter(viewController: view)
+        let historyInteractor = SearchHisotryInteractor()
+        let repositoryInteractor = SearchRepositoryInteractor()
         // PresenterはView, Interactor, Routerそれぞれ必要なので
         // 生成し、initの引数で渡す
-        let presenter = RepositoryListViewPresenter(view: view, interactor: interactor, router: router)
+        let presenter = RepositoryListViewPresenter(view: view,
+                                                    router: router,
+                                                    historyInteractor: historyInteractor,
+                                                    repositoryInteractor: repositoryInteractor)
 
-        interactor.delegate = presenter // Interactorの通知先を設定
         view.presenter = presenter    // ViewにPresenterを設定
 
         return view

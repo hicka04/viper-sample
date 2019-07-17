@@ -8,7 +8,12 @@
 
 import UIKit
 
-class RepositoryListRouter {
+protocol RepositoryListWireframe: AnyObject {
+    
+    func showRepositoryDetail(_ repository: Repository)
+}
+
+final class RepositoryListRouter {
 
     // 画面遷移のためにViewControllerが必要。initで受け取る
     weak var viewController: UIViewController?

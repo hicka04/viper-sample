@@ -8,7 +8,12 @@
 
 import Foundation
 
-class RepositoryDetailViewPresenter {
+protocol RepositoryDetailViewPresentation: class {
+    
+    func viewDidLoad()
+}
+
+final class RepositoryDetailViewPresenter {
 
     private weak var view: RepositoryDetailView?
     private let router: RepositoryDetailWireframe
@@ -21,7 +26,7 @@ class RepositoryDetailViewPresenter {
     }
 }
 
-extension RepositoryDetailViewPresenter: RepositoryDetailViewPresentable {
+extension RepositoryDetailViewPresenter: RepositoryDetailViewPresentation {
 
     func viewDidLoad() {
         view?.load(request: URLRequest(url: repository.htmlURL))

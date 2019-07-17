@@ -8,6 +8,14 @@
 
 import Foundation
 
+protocol RepositoryListViewPresentation: AnyObject {
+    
+    func viewDidLoad()
+    func searchButtonDidPush(searchText: String)
+    func refreshControlValueChanged(searchText: String)
+    func didSelectRow(at indexPath: IndexPath)
+}
+
 enum RepositoryListCellType {
     
     case repositoryCell(repository: Repository)
@@ -15,7 +23,7 @@ enum RepositoryListCellType {
     case noHistoryCell
 }
 
-class RepositoryListViewPresenter {
+final class RepositoryListViewPresenter {
 
     // View, Interactor, Routerへのアクセスはprotocolを介して行う
     private weak var view: RepositoryListView?
@@ -67,7 +75,7 @@ class RepositoryListViewPresenter {
 }
 
 // Presenterのプロトコルに準拠する
-extension RepositoryListViewPresenter: RepositoryListViewPresentable {
+extension RepositoryListViewPresenter: RepositoryListViewPresentation {
     
     func viewDidLoad() {
         historyInteractor.loadLastSeachText { result in

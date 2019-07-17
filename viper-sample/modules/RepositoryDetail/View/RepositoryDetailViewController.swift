@@ -9,9 +9,14 @@
 import UIKit
 import WebKit
 
-class RepositoryDetailViewController: UIViewController {
+protocol RepositoryDetailView: class {
+    
+    func load(request urlRequest: URLRequest)
+}
 
-    var presenter: RepositoryDetailViewPresentable!
+final class RepositoryDetailViewController: UIViewController {
+
+    var presenter: RepositoryDetailViewPresentation!
     
     @IBOutlet private weak var webView: WKWebView!
 

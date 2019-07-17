@@ -8,7 +8,11 @@
 
 import UIKit
 
-class RepositoryDetailRouter {
+protocol RepositoryDetailWireframe: class {
+    
+}
+
+final class RepositoryDetailRouter {
 
     weak var viewController: UIViewController?
 

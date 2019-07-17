@@ -8,10 +8,17 @@
 
 import UIKit
 
-class RepositoryListViewController: UIViewController {
+protocol RepositoryListView: AnyObject {
+    
+    func setLastSearchText(_ text: String)
+    func showRefreshView()
+    func reloadData(_ data: [RepositoryListCellType])
+}
+
+final class RepositoryListViewController: UIViewController {
 
     // Presenterへのアクセスはprotocolを介して行う
-    var presenter: RepositoryListViewPresentable!
+    var presenter: RepositoryListViewPresentation!
     
     @IBOutlet private weak var tableView: UITableView!
     private let cellId = "cellId"

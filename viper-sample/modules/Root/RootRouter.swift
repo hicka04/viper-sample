@@ -10,9 +10,13 @@ import UIKit
 
 class RootRouter {
     
-    private init() {}
+    private let window: UIWindow
     
-    static func showFirstView(window: UIWindow) {
+    init(window: UIWindow) {
+        self.window = window
+    }
+    
+    func showFirstView() {
         let firstView = RepositoryListRouter.assembleModules()
         let navigationController = UINavigationController(rootViewController: firstView)
         

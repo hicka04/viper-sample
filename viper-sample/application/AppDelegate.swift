@@ -12,15 +12,11 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
+    let rootRouter = RootRouter(window: UIWindow(frame: UIScreen.main.bounds))
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-        
-        RootRouter.showFirstView(window: window)
+        rootRouter.showFirstView()
         
         return true
     }

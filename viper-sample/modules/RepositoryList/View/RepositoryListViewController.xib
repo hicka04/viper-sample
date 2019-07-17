@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RepositoryListViewController" customModule="viper_sample" customModuleProvider="target">
             <connections>
+                <outlet property="errorMessageLabel" destination="lOX-gY-mp3" id="twM-Uc-A1B"/>
                 <outlet property="tableView" destination="rAS-iA-6qa" id="9hz-SE-bR5"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MJQ-5j-ZhN"/>
             </connections>
@@ -27,13 +28,24 @@
                         <outlet property="delegate" destination="-1" id="Rjv-Wc-iKw"/>
                     </connections>
                 </tableView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOX-gY-mp3">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="rAS-iA-6qa" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="84l-2k-RB2"/>
                 <constraint firstItem="rAS-iA-6qa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="K5P-pJ-yf0"/>
                 <constraint firstItem="rAS-iA-6qa" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Lot-tQ-pDG"/>
+                <constraint firstItem="lOX-gY-mp3" firstAttribute="leading" secondItem="rAS-iA-6qa" secondAttribute="leading" id="gyM-Nd-bbs"/>
+                <constraint firstItem="rAS-iA-6qa" firstAttribute="bottom" secondItem="lOX-gY-mp3" secondAttribute="bottom" id="i0j-QP-x79"/>
+                <constraint firstItem="lOX-gY-mp3" firstAttribute="top" secondItem="rAS-iA-6qa" secondAttribute="top" id="jsn-hd-eEe"/>
                 <constraint firstItem="rAS-iA-6qa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="pFM-oT-ObZ"/>
+                <constraint firstItem="rAS-iA-6qa" firstAttribute="trailing" secondItem="lOX-gY-mp3" secondAttribute="trailing" id="zFQ-wV-fbH"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>

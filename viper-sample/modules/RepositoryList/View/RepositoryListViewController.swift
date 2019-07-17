@@ -12,7 +12,8 @@ protocol RepositoryListView: AnyObject {
     
     func setLastSearchText(_ text: String)
     func showRefreshView()
-    func reloadData(_ data: [RepositoryListCellType])
+    func updateRepositories(_ repositories: [Repository])
+    func showErrorMessageView(reason: String)
 }
 
 final class RepositoryListViewController: UIViewController {
@@ -20,23 +21,31 @@ final class RepositoryListViewController: UIViewController {
     // Presenterへのアクセスはprotocolを介して行う
     var presenter: RepositoryListViewPresentation!
     
-    @IBOutlet private weak var tableView: UITableView!
-    private let cellId = "cellId"
-    private let errorCellId = "errorCellId"
-    private let noHisotryCellId = "noHisotryCellId"
-    
-    private let searchBar: UISearchBar = {
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            tableView.register(RepositoryCell.self)
+            tableView.refreshControl = refreshControl
+        }
+    }
+    @IBOutlet private weak var errorMessageLabel: UILabel!
+    private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "リポジトリ名を入力..."
         
+        searchBar.delegate = self
+        
         return searchBar
     }()
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlValueChanged(sender:)), for: .valueChanged)
+        return refreshControl
+    }()
     
-    private let refreshControl = UIRefreshControl()
-    
-    private var cells: [RepositoryListCellType] = [] {
+    private var repositories: [Repository] = [] {
         didSet {
             DispatchQueue.main.async {
+                self.errorMessageLabel.isHidden = true
                 self.tableView.reloadData() // 画面の更新
                 
                 if self.refreshControl.isRefreshing {
@@ -49,14 +58,6 @@ final class RepositoryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(RepositoryResultCell.createNib(), forCellReuseIdentifier: cellId)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: errorCellId)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: noHisotryCellId)
-        
-        refreshControl.addTarget(self, action: #selector(refreshControlValueChanged(sender:)), for: .valueChanged)
-        tableView.refreshControl = refreshControl
-        
-        searchBar.delegate = self
         navigationItem.titleView = searchBar
         
         presenter.viewDidLoad()
@@ -88,8 +89,15 @@ extension RepositoryListViewController: RepositoryListView {
         refreshControl.beginRefreshingManually(in: tableView)
     }
     
-    func reloadData(_ data: [RepositoryListCellType]) {
-        self.cells = data
+    func updateRepositories(_ repositories: [Repository]) {
+        self.repositories = repositories
+    }
+    
+    func showErrorMessageView(reason: String) {
+        DispatchQueue.main.async {
+            self.errorMessageLabel.text = reason
+            self.errorMessageLabel.isHidden = false
+        }
     }
 }
 
@@ -100,29 +108,14 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cells.count
+        return repositories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch cells[indexPath.row] {
-        case .repositoryCell(let repository):
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RepositoryResultCell
-            cell.setRepository(repository)
-            
-            return cell
-        case .errorCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: errorCellId, for: indexPath)
-            cell.textLabel?.text = "エラーが発生しました"
-            cell.isUserInteractionEnabled = false
-            
-            return cell
-        case .noHistoryCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: noHisotryCellId, for: indexPath)
-            cell.textLabel?.text = "↑にキーワードを入れてリポジトリを検索"
-            cell.isUserInteractionEnabled = false
-            
-            return cell
-        }
+        let cell: RepositoryCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.setRepository(repositories[indexPath.row])
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

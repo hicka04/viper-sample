@@ -1,5 +1,5 @@
 //
-//  RepositoryResultCell.swift
+//  RepositoryCell.swift
 //  viper-sample
 //
 //  Created by hicka04 on 2018/07/27.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepositoryResultCell: UITableViewCell {
+class RepositoryCell: UITableViewCell, NibRegistrable {
 
     @IBOutlet private weak var repositoryNameLabel: UILabel!
     @IBOutlet private weak var starCoutLabel: UILabel!

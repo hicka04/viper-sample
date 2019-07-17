@@ -40,9 +40,9 @@ final class RepositoryListViewPresenter {
                 switch result {
                 case .success(let repositories):
                     self.repositories = repositories
-                case .failure(let error):
+                case .failure:
                     self.repositories.removeAll()
-                    self.cellTypes = [.errorCell(error: error)]
+                    self.view?.showErrorMessageView(reason: "エラーが発生しました")
                 }
             }
         }
@@ -50,16 +50,7 @@ final class RepositoryListViewPresenter {
     
     private var repositories: [Repository] = [] {
         didSet {
-            guard !repositories.isEmpty else { return }
-            
-            cellTypes = repositories.map { repository in
-                RepositoryListCellType.repositoryCell(repository: repository)
-            }
-        }
-    }
-    private var cellTypes: [RepositoryListCellType] = [] {
-        didSet {
-            view?.reloadData(cellTypes)
+            view?.updateRepositories(repositories)
         }
     }
 
@@ -83,7 +74,7 @@ extension RepositoryListViewPresenter: RepositoryListViewPresentation {
             case .success(let searchText):
                 self.searchText = searchText
             case .failure:
-                cellTypes = [.noHistoryCell]
+                break
             }
         }
     }

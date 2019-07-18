@@ -13,11 +13,11 @@ protocol SearchHistoryUsecase: AnyObject {
     func loadLastSeachText(completion: (Swift.Result<String, SearchHistoryError>) -> Void)
 }
 
-final class SearchHisotryInteractor {
+final class SearchHistoryInteractor {
     
 }
 
-extension SearchHisotryInteractor: SearchHistoryUsecase {
+extension SearchHistoryInteractor: SearchHistoryUsecase {
     
     func loadLastSeachText(completion: (Swift.Result<String, SearchHistoryError>) -> Void) {
         let sortDescriptor = NSSortDescriptor(key: "lastSearchAt", ascending: false)

@@ -26,7 +26,7 @@ final class RepositoryListRouter {
     static func assembleModules() -> UIViewController {
         let view = RepositoryListViewController()
         let router = RepositoryListRouter(viewController: view)
-        let historyInteractor = SearchHisotryInteractor()
+        let historyInteractor = SearchHistoryInteractor()
         let repositoryInteractor = SearchRepositoryInteractor()
         // PresenterはView, Interactor, Routerそれぞれ必要なので
         // 生成し、initの引数で渡す

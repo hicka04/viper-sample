@@ -36,13 +36,13 @@ final class RepositoryListViewPresenter {
             
             view?.setLastSearchText(searchText)
             view?.showRefreshView()
-            repositoryInteractor.fetchRepositories(keyword: searchText) { result in
+            repositoryInteractor.fetchRepositories(keyword: searchText) { [weak self] result in
                 switch result {
                 case .success(let repositories):
-                    self.repositories = repositories
+                    self?.repositories = repositories
                 case .failure:
-                    self.repositories.removeAll()
-                    self.view?.showErrorMessageView(reason: "エラーが発生しました")
+                    self?.repositories.removeAll()
+                    self?.view?.showErrorMessageView(reason: "エラーが発生しました")
                 }
             }
         }

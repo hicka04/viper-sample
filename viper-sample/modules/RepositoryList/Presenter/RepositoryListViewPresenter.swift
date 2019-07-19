@@ -16,13 +16,6 @@ protocol RepositoryListViewPresentation: AnyObject {
     func didSelectRow(at indexPath: IndexPath)
 }
 
-enum RepositoryListCellType {
-    
-    case repositoryCell(repository: Repository)
-    case errorCell(error: Error)
-    case noHistoryCell
-}
-
 final class RepositoryListViewPresenter {
 
     // View, Interactor, Routerへのアクセスはprotocolを介して行う

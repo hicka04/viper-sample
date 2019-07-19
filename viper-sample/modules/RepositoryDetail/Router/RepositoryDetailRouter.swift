@@ -14,7 +14,7 @@ protocol RepositoryDetailWireframe: class {
 
 final class RepositoryDetailRouter {
 
-    weak var viewController: UIViewController?
+    private unowned let viewController: UIViewController
 
     private init(viewController: UIViewController) {
         self.viewController = viewController

@@ -16,7 +16,7 @@ protocol RepositoryListWireframe: AnyObject {
 final class RepositoryListRouter {
 
     // 画面遷移のためにViewControllerが必要。initで受け取る
-    weak var viewController: UIViewController?
+    private unowned let viewController: UIViewController
 
     private init(viewController: UIViewController) {
         self.viewController = viewController
@@ -50,6 +50,6 @@ extension RepositoryListRouter: RepositoryListWireframe {
         let detailView = RepositoryDetailRouter.assembleModules(repository: repository)
         // 詳細画面に遷移
         // ここで、init時に受け取ったViewControllerを使う
-        viewController?.navigationController?.pushViewController(detailView, animated: true)
+        viewController.navigationController?.pushViewController(detailView, animated: true)
     }
 }

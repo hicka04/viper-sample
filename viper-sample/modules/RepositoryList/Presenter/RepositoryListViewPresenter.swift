@@ -19,16 +19,21 @@ protocol RepositoryListViewPresentation: AnyObject {
 final class RepositoryListViewPresenter {
 
     // View, Interactor, Routerへのアクセスはprotocolを介して行う
+    // Viewは循環参照にならないよう`weak`プロパティ
     private weak var view: RepositoryListView?
     private let router: RepositoryListWireframe
     private let historyInteractor: SearchHistoryUsecase
     private let repositoryInteractor: SearchRepositoryUsecase
+    
     private var searchText: String = "" {
         didSet {
             guard !searchText.isEmpty else { return }
             
             view?.setLastSearchText(searchText)
             view?.showRefreshView()
+            
+            // Interactorにデータ取得処理を依頼
+            // `@escaping`がついているクロージャの場合は循環参照にならないよう`[weak self]`でキャプチャ
             repositoryInteractor.fetchRepositories(keyword: searchText) { [weak self] result in
                 switch result {
                 case .success(let repositories):
@@ -62,6 +67,7 @@ final class RepositoryListViewPresenter {
 extension RepositoryListViewPresenter: RepositoryListViewPresentation {
     
     func viewDidLoad() {
+        // Interactorにデータ取得処理を依頼
         historyInteractor.loadLastSeachText { result in
             switch result {
             case .success(let searchText):

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+// `@testable import`をするとinternalなクラスやプロトコルにアクセスできるようになる
 @testable import viper_sample
 
 class RepositoryListViewPresenterTests: XCTestCase {
@@ -18,6 +19,8 @@ class RepositoryListViewPresenterTests: XCTestCase {
     var presenter: RepositoryListViewPresenter!
 
     override func setUp() {
+        super.setUp()
+        
         view = .init()
         router = .init()
         historyInteractor = .init()

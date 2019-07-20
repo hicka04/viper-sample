@@ -269,19 +269,19 @@
 		B8B4F51222DE9DE600146E74 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				B8B4F51322DE9DF800146E74 /* interactor */,
+				B8B4F51322DE9DF800146E74 /* Interactor */,
 				B8B4F51422DE9E0200146E74 /* api */,
 			);
 			path = data;
 			sourceTree = "<group>";
 		};
-		B8B4F51322DE9DF800146E74 /* interactor */ = {
+		B8B4F51322DE9DF800146E74 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
 				B8B4F51822DEA27B00146E74 /* SearchRepository */,
 				B8B4F51522DE9E9D00146E74 /* SearchHistory */,
 			);
-			path = interactor;
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		B8B4F51422DE9E0200146E74 /* api */ = {

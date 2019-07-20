@@ -22,7 +22,7 @@ final class RepositoryListRouter {
         self.viewController = viewController
     }
 
-    // 依存関係の解決をしている
+    // DI
     static func assembleModules() -> UIViewController {
         let view = RepositoryListViewController()
         let router = RepositoryListRouter(viewController: view)

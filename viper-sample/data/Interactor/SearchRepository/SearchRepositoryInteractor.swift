@@ -16,6 +16,8 @@ protocol SearchRepositoryUsecase: AnyObject {
 
 final class SearchRepositoryInteractor {
     
+    // GitHubに問い合わせるためのAPIクライアント
+    // Interactorのテスト時にAPIクライアントをMockに差し替えて任意のレスポンスを返すようにするため
     private let client: GitHubRequestable
     
     init(client: GitHubRequestable = GitHubClient()) {
@@ -23,6 +25,7 @@ final class SearchRepositoryInteractor {
     }
 }
 
+// Interactorのプロトコルに準拠する
 extension SearchRepositoryInteractor: SearchRepositoryUsecase {
     
     func fetchRepositories(keyword: String,

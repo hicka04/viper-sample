@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ViperSampleDomain
 
 protocol RepositorySearchView: AnyObject {
     
@@ -25,7 +26,9 @@ class RepositorySearchViewController: UITableViewController {
     
     private var repositories: [Repository] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
         
@@ -34,6 +37,7 @@ class RepositorySearchViewController: UITableViewController {
 
         navigationItem.title = "Search"
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         clearsSelectionOnViewWillAppear = true
@@ -52,7 +56,7 @@ class RepositorySearchViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        cell.textLabel?.text = "\(repositories[indexPath.row])"
+        cell.textLabel?.text = repositories[indexPath.row].fullName
 
         return cell
     }

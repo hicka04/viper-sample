@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ViperSampleDomain
 
 protocol RepositorySearchWireframe: AnyObject {
     
@@ -22,7 +23,8 @@ final class RepositorySearchRouter {
     static func assembleModules() -> UIViewController {
         let view = RepositorySearchViewController()
         let router = RepositorySearchRouter(viewController: view)
-        let presenter = RepositorySearchPresenter(view: view, router: router)
+        let interactor = RepositorySearchInteractor()
+        let presenter = RepositorySearchPresenter(view: view, router: router, interactor: interactor)
         
         view.presenter = presenter
         

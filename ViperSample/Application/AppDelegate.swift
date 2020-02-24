@@ -15,9 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UINavigationBar.appearance().prefersLargeTitles = true
+        
         if #available(iOS 13.0, *) {
         } else {
-            print("appDelegate")
             let repositorySearchView = RepositorySearchRouter.assembleModules()
             
             let window = UIWindow(frame: UIScreen.main.bounds)

@@ -67,5 +67,8 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
+# XcodeGen
+*.xcodeproj
+
 # Other
 .DS_Store

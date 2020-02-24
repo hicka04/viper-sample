@@ -1,0 +1,48 @@
+name: ViperSample
+options:
+  bundleIdPrefix: com.hicka04
+  deploymentTarget:
+    iOS: 11.0
+targets:
+  ViperSample:
+    type: application
+    platform: iOS
+    sources:
+      - ViperSample
+    settings:
+      base:
+        DEVELOPMENT_TEAM: 8RYHZQ93KG
+        INFOPLIST_FILE: ViperSample/Application/Info.plist
+  ViperSampleTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - ViperSampleTests
+    settings:
+      base:
+        INFOPLIST_FILE: ViperSampleTests/Info.plist
+    dependencies:
+      - target: ViperSample
+schemes:
+  ViperSample:
+    build:
+      targets:
+        ViperSample: all
+        ViperSampleTests: test
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      coverageTargets:
+        - ViperSample
+      targets:
+        - name: ViperSampleTests
+          parallelizable: true
+          randomExecutionOrder: true
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

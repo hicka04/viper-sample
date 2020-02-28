@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Repository: Decodable {
+public struct Repository: Decodable, Equatable {
     
     public let id: ID
     public let name: String
@@ -16,7 +16,7 @@ public struct Repository: Decodable {
 
 extension Repository {
     
-    public struct ID: RawRepresentable, Decodable {
+    public struct ID: RawRepresentable, Decodable, Equatable {
         
         public let rawValue: Int
         

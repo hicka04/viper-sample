@@ -26,6 +26,8 @@ targets:
         INFOPLIST_FILE: ViperSampleTests/Info.plist
     dependencies:
       - target: ViperSample
+      - package: Quick
+      - package: Nimble
   ViperSampleDomain:
     type: framework
     platform: iOS
@@ -48,6 +50,8 @@ targets:
         INFOPLIST_FILE: ViperSampleDomainTests/Info.plist
     dependencies:
       - target: ViperSampleDomain
+      - package: Quick
+      - package: Nimble
   ViperSampleData:
     type: framework
     platform: iOS
@@ -68,6 +72,15 @@ targets:
         INFOPLIST_FILE: ViperSampleDomainTests/Info.plist
     dependencies:
       - target: ViperSampleData
+      - package: Quick
+      - package: Nimble
+packages:
+  Quick:
+    url: https://github.com/Quick/Quick.git
+    majorVersion: 2.2.0
+  Nimble:
+    url: https://github.com/Quick/Nimble.git
+    version: 8.0.2
 schemes:
   ViperSample:
     build:

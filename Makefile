@@ -2,6 +2,7 @@ ProjectName = ViperSample
 
 # init
 init:
+	defaults write com.apple.dt.Xcode ShowBuildOperationDuration YES
 	make install
 	make generate
 	make open

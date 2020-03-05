@@ -13,6 +13,7 @@ targets:
       base:
         DEVELOPMENT_TEAM: 8RYHZQ93KG
         INFOPLIST_FILE: ViperSample/Application/Info.plist
+        OTHER_SWIFT_FLAGS: -Xfrontend -warn-long-function-bodies=100
     dependencies:
       - target: ViperSampleDomain
   ViperSampleTests:
@@ -37,6 +38,7 @@ targets:
       base:
         DEVELOPMENT_TEAM: 8RYHZQ93KG
         INFOPLIST_FILE: ViperSampleDomain/Info.plist
+        OTHER_SWIFT_FLAGS: -Xfrontend -warn-long-function-bodies=100
     dependencies:
       - target: ViperSampleData
   ViperSampleDomainTests:
@@ -61,6 +63,7 @@ targets:
       base:
         DEVELOPMENT_TEAM: 8RYHZQ93KG
         INFOPLIST_FILE: ViperSampleDomain/Info.plist
+        OTHER_SWIFT_FLAGS: -Xfrontend -warn-long-function-bodies=100
   ViperSampleDataTests:
     type: bundle.unit-test
     platform: iOS

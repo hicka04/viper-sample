@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootRouter {
+class AppRouter {
     
     private let window: UIWindow
     

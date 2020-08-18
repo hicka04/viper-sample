@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1160"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9C9B081B21094ECD000C032F"
-               BuildableName = "viper-sample.app"
-               BlueprintName = "viper-sample"
-               ReferencedContainer = "container:viper-sample.xcodeproj">
+               BuildableName = "ViperSample.app"
+               BlueprintName = "ViperSample"
+               ReferencedContainer = "container:ViperSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,13 +29,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9CBCCE2C210FD50C00C27E95"
-               BuildableName = "viper-sampleTests.xctest"
-               BlueprintName = "viper-sampleTests"
-               ReferencedContainer = "container:viper-sample.xcodeproj">
+               BuildableName = "ViperSampleTests.xctest"
+               BlueprintName = "ViperSampleTests"
+               ReferencedContainer = "container:ViperSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C9B081B21094ECD000C032F"
-            BuildableName = "viper-sample.app"
-            BlueprintName = "viper-sample"
-            ReferencedContainer = "container:viper-sample.xcodeproj">
+            BuildableName = "ViperSample.app"
+            BlueprintName = "ViperSample"
+            ReferencedContainer = "container:ViperSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +73,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9C9B081B21094ECD000C032F"
-            BuildableName = "viper-sample.app"
-            BlueprintName = "viper-sample"
-            ReferencedContainer = "container:viper-sample.xcodeproj">
+            BuildableName = "ViperSample.app"
+            BlueprintName = "ViperSample"
+            ReferencedContainer = "container:ViperSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

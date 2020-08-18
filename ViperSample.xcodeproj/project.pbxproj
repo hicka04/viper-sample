@@ -19,7 +19,7 @@
 		9C7CF38B21097C8200867F33 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38A21097C8200867F33 /* SearchResponse.swift */; };
 		9C7CF38D21097E1000867F33 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38C21097E1000867F33 /* GitHubAPI.swift */; };
 		9C7CF38F2109978500867F33 /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF38E2109978500867F33 /* GitHubClient.swift */; };
-		9C7CF3912109B32D00867F33 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF3902109B32D00867F33 /* RootRouter.swift */; };
+		9C7CF3912109B32D00867F33 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CF3902109B32D00867F33 /* AppRouter.swift */; };
 		9C7CF3932109B7D200867F33 /* RepositoryListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C7CF3922109B7D200867F33 /* RepositoryListViewController.xib */; };
 		9C7CF3972109D1EE00867F33 /* RepositoryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C7CF3962109D1EE00867F33 /* RepositoryDetailViewController.xib */; };
 		9C863E24210ABEE0000D0EE5 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C863E22210ABEE0000D0EE5 /* RepositoryCell.swift */; };
@@ -61,25 +61,24 @@
 		9C7CF38A21097C8200867F33 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		9C7CF38C21097E1000867F33 /* GitHubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
 		9C7CF38E2109978500867F33 /* GitHubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
-		9C7CF3902109B32D00867F33 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		9C7CF3902109B32D00867F33 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		9C7CF3922109B7D200867F33 /* RepositoryListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryListViewController.xib; sourceTree = "<group>"; };
 		9C7CF3962109D1EE00867F33 /* RepositoryDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryDetailViewController.xib; sourceTree = "<group>"; };
 		9C863E22210ABEE0000D0EE5 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		9C863E23210ABEE0000D0EE5 /* RepositoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryCell.xib; sourceTree = "<group>"; };
 		9C863E27210ACF08000D0EE5 /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
-		9C9B081C21094ECD000C032F /* viper-sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "viper-sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C9B081C21094ECD000C032F /* ViperSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViperSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C9B081F21094ECE000C032F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C9B082621094ECF000C032F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C9B082921094ECF000C032F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C9B082B21094ECF000C032F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CBCCE2D210FD50C00C27E95 /* viper-sampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "viper-sampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CBCCE2D210FD50C00C27E95 /* ViperSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViperSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBCCE31210FD50C00C27E95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CBCCE3F210FDBBF00C27E95 /* viper-sampleTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "viper-sampleTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		A71785CB8F36C79CD7B99122 /* RepositoryListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryListViewController.swift; sourceTree = "<group>"; };
 		B856F79B22DEFFB7009BFDA0 /* UITableView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+extension.swift"; sourceTree = "<group>"; };
 		B856F79D22DEFFD4009BFDA0 /* UITableViewCell+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+extension.swift"; sourceTree = "<group>"; };
 		B86F6BF522DEF28500FF639E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		B87A05F922DFFD1D00A71FDA /* RepositoryListViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepositoryListViewPresenterTests.swift; path = "viper-sample/modules/RepositoryList/Presenter/RepositoryListViewPresenterTests.swift"; sourceTree = SOURCE_ROOT; };
+		B87A05F922DFFD1D00A71FDA /* RepositoryListViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepositoryListViewPresenterTests.swift; path = ViperSample/Modules/RepositoryList/Presenter/RepositoryListViewPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		B8B4F51622DE9EEA00146E74 /* SearchHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryInteractor.swift; sourceTree = "<group>"; };
 		B8B4F51922DEA29B00146E74 /* SearchRepositoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryInteractor.swift; sourceTree = "<group>"; };
 		FBD161EEEC3FD4DADCB914E8 /* RepositoryDetailRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RepositoryDetailRouter.swift; sourceTree = "<group>"; };
@@ -114,31 +113,23 @@
 			path = RepositoryDetail;
 			sourceTree = "<group>";
 		};
-		17F09BC9211EA022007FEA3A /* application */ = {
+		17F09BC9211EA022007FEA3A /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				9C9B081F21094ECE000C032F /* AppDelegate.swift */,
+				B8BBC73124EC14E2009461B4 /* Delegate */,
 				9C9B082B21094ECF000C032F /* Info.plist */,
 				9C9B082821094ECF000C032F /* LaunchScreen.storyboard */,
 				17F09BDC21244E38007FEA3A /* viper-sample.xcdatamodeld */,
 			);
-			path = application;
+			path = Application;
 			sourceTree = "<group>";
 		};
-		17F09BCA211EA06E007FEA3A /* resources */ = {
+		17F09BCA211EA06E007FEA3A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				9C9B082621094ECF000C032F /* Assets.xcassets */,
 			);
-			path = resources;
-			sourceTree = "<group>";
-		};
-		17F09BCB211EA09F007FEA3A /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				9C7CF3902109B32D00867F33 /* RootRouter.swift */,
-			);
-			path = Root;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2E9607551792C57BD2D08C1E /* RepositoryList */ = {
@@ -167,14 +158,13 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		9C7CF38221095B4E00867F33 /* modules */ = {
+		9C7CF38221095B4E00867F33 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				17F09BCB211EA09F007FEA3A /* Root */,
 				2E9607551792C57BD2D08C1E /* RepositoryList */,
 				15715F26DC1D6115F4D56399 /* RepositoryDetail */,
 			);
-			path = modules;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		9C7CF38321097B2900867F33 /* GitHubClient */ = {
@@ -182,18 +172,19 @@
 			children = (
 				9C7CF38C21097E1000867F33 /* GitHubAPI.swift */,
 				9C7CF38E2109978500867F33 /* GitHubClient.swift */,
+				9C7CF38421097B5E00867F33 /* Enitities */,
 			);
 			path = GitHubClient;
 			sourceTree = "<group>";
 		};
-		9C7CF38421097B5E00867F33 /* enitities */ = {
+		9C7CF38421097B5E00867F33 /* Enitities */ = {
 			isa = PBXGroup;
 			children = (
 				9C7CF38621097B8700867F33 /* User.swift */,
 				9C7CF38821097BD400867F33 /* Repository.swift */,
 				9C7CF38A21097C8200867F33 /* SearchResponse.swift */,
 			);
-			path = enitities;
+			path = Enitities;
 			sourceTree = "<group>";
 		};
 		9C863E21210ABEAD000D0EE5 /* SubView */ = {
@@ -205,7 +196,7 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
-		9C863E26210ACEDF000D0EE5 /* extensions */ = {
+		9C863E26210ACEDF000D0EE5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				9C863E27210ACF08000D0EE5 /* UIView+extension.swift */,
@@ -214,14 +205,14 @@
 				B856F79B22DEFFB7009BFDA0 /* UITableView+extension.swift */,
 				B856F79D22DEFFD4009BFDA0 /* UITableViewCell+extension.swift */,
 			);
-			path = extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9C9B081321094ECD000C032F = {
 			isa = PBXGroup;
 			children = (
-				9C9B081E21094ECD000C032F /* viper-sample */,
-				9CBCCE2E210FD50C00C27E95 /* viper-sampleTests */,
+				9C9B081E21094ECD000C032F /* ViperSample */,
+				9CBCCE2E210FD50C00C27E95 /* ViperSampleTests */,
 				9C9B081D21094ECD000C032F /* Products */,
 				B86F6BF422DEF28500FF639E /* Frameworks */,
 			);
@@ -230,32 +221,31 @@
 		9C9B081D21094ECD000C032F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C9B081C21094ECD000C032F /* viper-sample.app */,
-				9CBCCE2D210FD50C00C27E95 /* viper-sampleTests.xctest */,
+				9C9B081C21094ECD000C032F /* ViperSample.app */,
+				9CBCCE2D210FD50C00C27E95 /* ViperSampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9C9B081E21094ECD000C032F /* viper-sample */ = {
+		9C9B081E21094ECD000C032F /* ViperSample */ = {
 			isa = PBXGroup;
 			children = (
-				17F09BC9211EA022007FEA3A /* application */,
-				9C7CF38221095B4E00867F33 /* modules */,
-				B8B4F51222DE9DE600146E74 /* data */,
-				9C7CF38421097B5E00867F33 /* enitities */,
-				9C863E26210ACEDF000D0EE5 /* extensions */,
-				17F09BCA211EA06E007FEA3A /* resources */,
+				17F09BC9211EA022007FEA3A /* Application */,
+				9C7CF38221095B4E00867F33 /* Modules */,
+				B8B4F51222DE9DE600146E74 /* Domain */,
+				B89BA68D24EC11DC00E6441E /* Infra */,
+				9C863E26210ACEDF000D0EE5 /* Extensions */,
+				17F09BCA211EA06E007FEA3A /* Resources */,
 			);
-			path = "viper-sample";
+			path = ViperSample;
 			sourceTree = "<group>";
 		};
-		9CBCCE2E210FD50C00C27E95 /* viper-sampleTests */ = {
+		9CBCCE2E210FD50C00C27E95 /* ViperSampleTests */ = {
 			isa = PBXGroup;
 			children = (
 				9CBCCE31210FD50C00C27E95 /* Info.plist */,
-				9CBCCE3F210FDBBF00C27E95 /* viper-sampleTests-Bridging-Header.h */,
 			);
-			path = "viper-sampleTests";
+			path = ViperSampleTests;
 			sourceTree = "<group>";
 		};
 		B86F6BF422DEF28500FF639E /* Frameworks */ = {
@@ -266,30 +256,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B8B4F51222DE9DE600146E74 /* data */ = {
+		B89BA68D24EC11DC00E6441E /* Infra */ = {
 			isa = PBXGroup;
 			children = (
-				B8B4F51322DE9DF800146E74 /* Interactor */,
-				B8B4F51422DE9E0200146E74 /* api */,
+				9C7CF38321097B2900867F33 /* GitHubClient */,
 			);
-			path = data;
+			path = Infra;
 			sourceTree = "<group>";
 		};
-		B8B4F51322DE9DF800146E74 /* Interactor */ = {
+		B8B4F51222DE9DE600146E74 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B8B4F51322DE9DF800146E74 /* Usecases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		B8B4F51322DE9DF800146E74 /* Usecases */ = {
 			isa = PBXGroup;
 			children = (
 				B8B4F51822DEA27B00146E74 /* SearchRepository */,
 				B8B4F51522DE9E9D00146E74 /* SearchHistory */,
 			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		B8B4F51422DE9E0200146E74 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				9C7CF38321097B2900867F33 /* GitHubClient */,
-			);
-			path = api;
+			path = Usecases;
 			sourceTree = "<group>";
 		};
 		B8B4F51522DE9E9D00146E74 /* SearchHistory */ = {
@@ -306,6 +295,23 @@
 				B8B4F51922DEA29B00146E74 /* SearchRepositoryInteractor.swift */,
 			);
 			path = SearchRepository;
+			sourceTree = "<group>";
+		};
+		B8BBC73124EC14E2009461B4 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				9C9B081F21094ECE000C032F /* AppDelegate.swift */,
+				B8BBC73224EC14F1009461B4 /* Router */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		B8BBC73224EC14F1009461B4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9C7CF3902109B32D00867F33 /* AppRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		DCC875A7ACF5B9F40C101F43 /* View */ = {
@@ -347,9 +353,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9C9B081B21094ECD000C032F /* viper-sample */ = {
+		9C9B081B21094ECD000C032F /* ViperSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9C9B082E21094ECF000C032F /* Build configuration list for PBXNativeTarget "viper-sample" */;
+			buildConfigurationList = 9C9B082E21094ECF000C032F /* Build configuration list for PBXNativeTarget "ViperSample" */;
 			buildPhases = (
 				9C9B081821094ECD000C032F /* Sources */,
 				9C9B081921094ECD000C032F /* Frameworks */,
@@ -359,14 +365,14 @@
 			);
 			dependencies = (
 			);
-			name = "viper-sample";
+			name = ViperSample;
 			productName = "viper-sample";
-			productReference = 9C9B081C21094ECD000C032F /* viper-sample.app */;
+			productReference = 9C9B081C21094ECD000C032F /* ViperSample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9CBCCE2C210FD50C00C27E95 /* viper-sampleTests */ = {
+		9CBCCE2C210FD50C00C27E95 /* ViperSampleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CBCCE36210FD50C00C27E95 /* Build configuration list for PBXNativeTarget "viper-sampleTests" */;
+			buildConfigurationList = 9CBCCE36210FD50C00C27E95 /* Build configuration list for PBXNativeTarget "ViperSampleTests" */;
 			buildPhases = (
 				9CBCCE29210FD50C00C27E95 /* Sources */,
 				9CBCCE2A210FD50C00C27E95 /* Frameworks */,
@@ -377,9 +383,9 @@
 			dependencies = (
 				9CBCCE33210FD50C00C27E95 /* PBXTargetDependency */,
 			);
-			name = "viper-sampleTests";
+			name = ViperSampleTests;
 			productName = "viper-sampleTests";
-			productReference = 9CBCCE2D210FD50C00C27E95 /* viper-sampleTests.xctest */;
+			productReference = 9CBCCE2D210FD50C00C27E95 /* ViperSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -404,7 +410,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9C9B081721094ECD000C032F /* Build configuration list for PBXProject "viper-sample" */;
+			buildConfigurationList = 9C9B081721094ECD000C032F /* Build configuration list for PBXProject "ViperSample" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -417,8 +423,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9C9B081B21094ECD000C032F /* viper-sample */,
-				9CBCCE2C210FD50C00C27E95 /* viper-sampleTests */,
+				9C9B081B21094ECD000C032F /* ViperSample */,
+				9CBCCE2C210FD50C00C27E95 /* ViperSampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -452,7 +458,7 @@
 			files = (
 				9C7CF38D21097E1000867F33 /* GitHubAPI.swift in Sources */,
 				9C7CF38B21097C8200867F33 /* SearchResponse.swift in Sources */,
-				9C7CF3912109B32D00867F33 /* RootRouter.swift in Sources */,
+				9C7CF3912109B32D00867F33 /* AppRouter.swift in Sources */,
 				B856F79E22DEFFD4009BFDA0 /* UITableViewCell+extension.swift in Sources */,
 				9C7CF38F2109978500867F33 /* GitHubClient.swift in Sources */,
 				9C9B082021094ECE000C032F /* AppDelegate.swift in Sources */,
@@ -488,7 +494,7 @@
 /* Begin PBXTargetDependency section */
 		9CBCCE33210FD50C00C27E95 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9C9B081B21094ECD000C032F /* viper-sample */;
+			target = 9C9B081B21094ECD000C032F /* ViperSample */;
 			targetProxy = 9CBCCE32210FD50C00C27E95 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -624,7 +630,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8RYHZQ93KG;
-				INFOPLIST_FILE = "viper-sample/application/Info.plist";
+				INFOPLIST_FILE = ViperSample/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hicka04.viper-sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -639,7 +645,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8RYHZQ93KG;
-				INFOPLIST_FILE = "viper-sample/application/Info.plist";
+				INFOPLIST_FILE = ViperSample/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hicka04.viper-sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -655,15 +661,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R5FG3RJPRN;
-				INFOPLIST_FILE = "viper-sampleTests/Info.plist";
+				INFOPLIST_FILE = ViperSampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hicka04.viper-sampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "viper-sampleTests/viper-sampleTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/viper-sample.app/viper-sample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViperSample.app/ViperSample";
 			};
 			name = Debug;
 		};
@@ -674,21 +680,21 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R5FG3RJPRN;
-				INFOPLIST_FILE = "viper-sampleTests/Info.plist";
+				INFOPLIST_FILE = ViperSampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hicka04.viper-sampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "viper-sampleTests/viper-sampleTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/viper-sample.app/viper-sample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViperSample.app/ViperSample";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9C9B081721094ECD000C032F /* Build configuration list for PBXProject "viper-sample" */ = {
+		9C9B081721094ECD000C032F /* Build configuration list for PBXProject "ViperSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C9B082C21094ECF000C032F /* Debug */,
@@ -697,7 +703,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9C9B082E21094ECF000C032F /* Build configuration list for PBXNativeTarget "viper-sample" */ = {
+		9C9B082E21094ECF000C032F /* Build configuration list for PBXNativeTarget "ViperSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9C9B082F21094ECF000C032F /* Debug */,
@@ -706,7 +712,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CBCCE36210FD50C00C27E95 /* Build configuration list for PBXNativeTarget "viper-sampleTests" */ = {
+		9CBCCE36210FD50C00C27E95 /* Build configuration list for PBXNativeTarget "ViperSampleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CBCCE34210FD50C00C27E95 /* Debug */,

@@ -8,7 +8,7 @@
 
 import XCTest
 // `@testable import`をするとinternalなクラスやプロトコルにアクセスできるようになる
-@testable import viper_sample
+@testable import ViperSample
 
 class RepositoryListViewPresenterTests: XCTestCase {
     

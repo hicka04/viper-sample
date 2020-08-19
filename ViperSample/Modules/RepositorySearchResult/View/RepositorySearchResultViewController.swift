@@ -78,7 +78,7 @@ extension RepositorySearchResultViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.didSelectRow(at: indexPath)
+        presenter.didSelect(repository: repositories[indexPath.row])
     }
 }
 

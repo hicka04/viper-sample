@@ -10,7 +10,7 @@ import Foundation
 
 protocol RepositorySearchResultPresentation: AnyObject {
     func searchButtonDidPush(searchText: String)
-    func didSelectRow(at indexPath: IndexPath)
+    func didSelect(repository: Repository)
 }
 
 final class RepositorySearchResultPresenter {
@@ -19,12 +19,6 @@ final class RepositorySearchResultPresenter {
     private weak var view: RepositorySearchResultView?
     private let router: RepositorySearchResultWireframe
     private let searchRepositoryInteractor: SearchRepositoryUsecase
-    
-    private var repositories: [Repository] = [] {
-        didSet {
-            view?.updateRepositories(repositories)
-        }
-    }
 
     init(view: RepositorySearchResultView,
          router: RepositorySearchResultWireframe,
@@ -44,18 +38,14 @@ extension RepositorySearchResultPresenter: RepositorySearchResultPresentation {
         searchRepositoryInteractor.fetchRepositories(keyword: searchText) { [weak self] result in
             switch result {
             case .success(let repositories):
-                self?.repositories = repositories
+                self?.view?.updateRepositories(repositories)
             case .failure:
-                self?.repositories.removeAll()
                 self?.view?.showErrorAlert()
             }
         }
     }
     
-    func didSelectRow(at indexPath: IndexPath) {
-        guard indexPath.row < repositories.count else { return }
-        
-        let repository = repositories[indexPath.row]
-        router.showRepositoryDetail(repository) // Routerに画面遷移を依頼
+    func didSelect(repository: Repository) {
+        router.showRepositoryDetail(repository)
     }
 }

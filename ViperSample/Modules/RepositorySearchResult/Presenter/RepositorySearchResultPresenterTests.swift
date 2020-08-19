@@ -16,7 +16,7 @@ class RepositorySearchResultPresenterTests: XCTestCase {
     var router: RouterMock!
     var historyInteractor: HistoryInteractorMock!
     var repositoryInteractor: RepositoryInteractorMock!
-    var presenter: RepositoryListViewPresenter!
+    var presenter: RepositorySearchResultPresenter!
 
     override func setUp() {
         super.setUp()
@@ -84,7 +84,7 @@ class RepositorySearchResultPresenterTests: XCTestCase {
                     presenter.searchButtonDidPush(searchText: "Swift")
                     
                     XCTContext.runActivity(named: "`showErrorMessageView` is called") { _ in
-                        XCTAssertEqual(view.callCount_showErrorMessageView, 1)
+                        XCTAssertEqual(view.callCount_showErrorAlert, 1)
                     }
                 }
                 
@@ -115,8 +115,7 @@ class RepositorySearchResultPresenterTests: XCTestCase {
     }
     
     // MARK: - mock
-    class ViewMock: RepositoryListView {
-        
+    class ViewMock: RepositorySearchResultView {
         var callCount_setLastSearchText = 0
         func setLastSearchText(_ text: String) {
             callCount_setLastSearchText += 1
@@ -132,13 +131,13 @@ class RepositorySearchResultPresenterTests: XCTestCase {
             callCount_updateRepositories += 1
         }
         
-        var callCount_showErrorMessageView = 0
-        func showErrorMessageView(reason: String) {
-            callCount_showErrorMessageView += 1
+        var callCount_showErrorAlert = 0
+        func showErrorAlert() {
+            callCount_showErrorAlert += 1
         }
     }
     
-    class RouterMock: RepositoryListWireframe {
+    class RouterMock: RepositorySearchResultWireframe {
         
         var isCalled_showRepositoryDetail = false
         func showRepositoryDetail(_ repository: Repository) {

@@ -1,5 +1,5 @@
 //
-//  RepositoryListPresenter.swift
+//  RepositorySearchResultPresenter.swift
 //  viper-sample
 //
 //  Created by hicka04 on 26/07/2018.
@@ -8,20 +8,19 @@
 
 import Foundation
 
-protocol RepositoryListViewPresentation: AnyObject {
+protocol RepositorySearchResultPresentation: AnyObject {
     
     func viewDidLoad()
     func searchButtonDidPush(searchText: String)
-    func refreshControlValueChanged(searchText: String)
     func didSelectRow(at indexPath: IndexPath)
 }
 
-final class RepositoryListViewPresenter {
+final class RepositorySearchResultPresenter {
 
     // View, Interactor, Routerへのアクセスはprotocolを介して行う
     // Viewは循環参照にならないよう`weak`プロパティ
-    private weak var view: RepositoryListView?
-    private let router: RepositoryListWireframe
+    private weak var view: RepositorySearchResultView?
+    private let router: RepositorySearchResultWireframe
     private let historyInteractor: SearchHistoryUsecase
     private let repositoryInteractor: SearchRepositoryUsecase
     
@@ -30,7 +29,6 @@ final class RepositoryListViewPresenter {
             guard !searchText.isEmpty else { return }
             
             view?.setLastSearchText(searchText)
-            view?.showRefreshView()
             
             // Interactorにデータ取得処理を依頼
             // `@escaping`がついているクロージャの場合は循環参照にならないよう`[weak self]`でキャプチャ
@@ -40,7 +38,7 @@ final class RepositoryListViewPresenter {
                     self?.repositories = repositories
                 case .failure:
                     self?.repositories.removeAll()
-                    self?.view?.showErrorMessageView(reason: "エラーが発生しました")
+                    self?.view?.showErrorAlert()
                 }
             }
         }
@@ -52,8 +50,8 @@ final class RepositoryListViewPresenter {
         }
     }
 
-    init(view: RepositoryListView,
-         router: RepositoryListWireframe,
+    init(view: RepositorySearchResultView,
+         router: RepositorySearchResultWireframe,
          historyInteractor: SearchHistoryUsecase,
          repositoryInteractor: SearchRepositoryUsecase) {
         self.view = view
@@ -64,7 +62,7 @@ final class RepositoryListViewPresenter {
 }
 
 // Presenterのプロトコルに準拠する
-extension RepositoryListViewPresenter: RepositoryListViewPresentation {
+extension RepositorySearchResultPresenter: RepositorySearchResultPresentation {
     
     func viewDidLoad() {
         // Interactorにデータ取得処理を依頼
@@ -79,10 +77,6 @@ extension RepositoryListViewPresenter: RepositoryListViewPresentation {
     }
     
     func searchButtonDidPush(searchText: String) {
-        self.searchText = searchText
-    }
-    
-    func refreshControlValueChanged(searchText: String) {
         self.searchText = searchText
     }
     

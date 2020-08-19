@@ -17,7 +17,7 @@ class AppRouter {
     }
     
     func showFirstView() {
-        let firstView = RepositoryListRouter.assembleModules()
+        let firstView = RepositorySearchResultRouter.assembleModules()
         let navigationController = UINavigationController(rootViewController: firstView)
         
         window.rootViewController = navigationController

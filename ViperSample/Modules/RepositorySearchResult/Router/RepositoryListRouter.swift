@@ -1,5 +1,5 @@
 //
-//  RepositoryListRouter.swift
+//  RepositorySearchResultRouter.swift
 //  viper-sample
 //
 //  Created by hicka04 on 26/07/2018.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol RepositoryListWireframe: AnyObject {
+protocol RepositorySearchResultWireframe: AnyObject {
     
     func showRepositoryDetail(_ repository: Repository)
 }
 
-final class RepositoryListRouter {
+final class RepositorySearchResultRouter {
 
     // 画面遷移のためにViewControllerが必要。initで受け取る
     private unowned let viewController: UIViewController
@@ -24,13 +24,13 @@ final class RepositoryListRouter {
 
     // DI
     static func assembleModules() -> UIViewController {
-        let view = RepositoryListViewController()
-        let router = RepositoryListRouter(viewController: view)
+        let view = RepositorySearchResultViewController()
+        let router = RepositorySearchResultRouter(viewController: view)
         let historyInteractor = SearchHistoryInteractor()
         let repositoryInteractor = SearchRepositoryInteractor()
         // PresenterはView, Interactor, Routerそれぞれ必要なので
         // 生成し、initの引数で渡す
-        let presenter = RepositoryListViewPresenter(view: view,
+        let presenter = RepositorySearchResultPresenter(view: view,
                                                     router: router,
                                                     historyInteractor: historyInteractor,
                                                     repositoryInteractor: repositoryInteractor)
@@ -43,7 +43,7 @@ final class RepositoryListRouter {
 
 // Routerのプロトコルに準拠する
 // 遷移する各画面ごとにメソッドを定義
-extension RepositoryListRouter: RepositoryListWireframe {
+extension RepositorySearchResultRouter: RepositorySearchResultWireframe {
 
     func showRepositoryDetail(_ repository: Repository) {
         // 詳細画面のRouterに依存関係の解決を依頼

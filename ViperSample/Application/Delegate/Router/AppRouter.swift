@@ -8,17 +8,29 @@
 
 import UIKit
 
-class AppRouter {
-    
+protocol AppWireframe: AnyObject {
+    func showRepositorySearchResultView()
+}
+
+final class AppRouter {
     private let window: UIWindow
     
-    init(window: UIWindow) {
+    private init(window: UIWindow) {
         self.window = window
     }
     
-    func showFirstView() {
-        let firstView = RepositorySearchResultRouter.assembleModules()
-        let navigationController = UINavigationController(rootViewController: firstView)
+    static func assembleModules(window: UIWindow) -> AppPresentation {
+        let router = AppRouter(window: window)
+        let presenter = AppPresenter(router: router)
+        
+        return presenter
+    }
+}
+
+extension AppRouter: AppWireframe {
+    func showRepositorySearchResultView() {
+        let repositorySearchResultView = RepositorySearchResultRouter.assembleModules()
+        let navigationController = UINavigationController(rootViewController: repositorySearchResultView)
         
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

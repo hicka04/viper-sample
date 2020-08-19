@@ -11,12 +11,11 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    let appRouter = AppRouter(window: UIWindow(frame: UIScreen.main.bounds))
+    let appPresenter = AppRouter.assembleModules(window: UIWindow(frame: UIScreen.main.bounds))
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        appRouter.showFirstView()
+        appPresenter.didFinishLaunch()
         
         return true
     }

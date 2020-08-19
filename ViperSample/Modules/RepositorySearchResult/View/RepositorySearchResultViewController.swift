@@ -40,12 +40,7 @@ final class RepositorySearchResultViewController: UITableViewController {
         navigationItem.titleView = searchBar
         
         tableView.register(RepositoryCell.self)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
+        clearsSelectionOnViewWillAppear = true
     }
 }
 

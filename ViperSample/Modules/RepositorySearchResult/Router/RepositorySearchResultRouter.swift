@@ -9,12 +9,10 @@
 import UIKit
 
 protocol RepositorySearchResultWireframe: AnyObject {
-    
     func showRepositoryDetail(_ repository: Repository)
 }
 
 final class RepositorySearchResultRouter {
-
     // 画面遷移のためにViewControllerが必要。initで受け取る
     private unowned let viewController: UIViewController
 
@@ -26,15 +24,13 @@ final class RepositorySearchResultRouter {
     static func assembleModules() -> UIViewController {
         let view = RepositorySearchResultViewController()
         let router = RepositorySearchResultRouter(viewController: view)
-        let historyInteractor = SearchHistoryInteractor()
-        let repositoryInteractor = SearchRepositoryInteractor()
+        let searchRepositoryInteractor = SearchRepositoryInteractor()
         // PresenterはView, Interactor, Routerそれぞれ必要なので
         // 生成し、initの引数で渡す
         let presenter = RepositorySearchResultPresenter(
             view: view,
             router: router,
-            historyInteractor: historyInteractor,
-            repositoryInteractor: repositoryInteractor
+            searchRepositoryInteractor: searchRepositoryInteractor
         )
 
         view.presenter = presenter    // ViewにPresenterを設定
@@ -46,7 +42,6 @@ final class RepositorySearchResultRouter {
 // Routerのプロトコルに準拠する
 // 遷移する各画面ごとにメソッドを定義
 extension RepositorySearchResultRouter: RepositorySearchResultWireframe {
-
     func showRepositoryDetail(_ repository: Repository) {
         // 詳細画面のRouterに依存関係の解決を依頼
         let detailView = RepositoryDetailRouter.assembleModules(repository: repository)

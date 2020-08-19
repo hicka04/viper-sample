@@ -14,8 +14,7 @@ class RepositorySearchResultPresenterTests: XCTestCase {
     
     var view: ViewMock!
     var router: RouterMock!
-    var historyInteractor: HistoryInteractorMock!
-    var repositoryInteractor: RepositoryInteractorMock!
+    var searchRepositoryInteractor: RepositoryInteractorMock!
     var presenter: RepositorySearchResultPresenter!
 
     override func setUp() {
@@ -23,63 +22,41 @@ class RepositorySearchResultPresenterTests: XCTestCase {
         
         view = .init()
         router = .init()
-        historyInteractor = .init()
-        repositoryInteractor = .init()
+        searchRepositoryInteractor = .init()
         presenter = .init(
             view: view,
             router: router,
-            historyInteractor: historyInteractor,
-            repositoryInteractor: repositoryInteractor
+            searchRepositoryInteractor: searchRepositoryInteractor
         )
     }
 
     override func tearDown() {
         
     }
-
-    func test_viewDidLoad() {
-        // PresenterにviewDidLoadのイベントが届いたときの挙動をテスト
-        // Interactorに最後の検索文字列を取得するよう依頼する実装にしたので、
-        // 正しく依頼されているかチェック
-        XCTContext.runActivity(named: "viewDidLoad") { _ in
-            XCTContext.runActivity(named: "when before called") { _ in
-                XCTContext.runActivity(named: "`loadLastSeachText` is not called") { _ in
-                    XCTAssertEqual(historyInteractor.callCount_loadLastSeachText, 0)
-                }
-            }
-            
-            XCTContext.runActivity(named: "when after called") { _ in
-                presenter.viewDidLoad()
-                
-                XCTContext.runActivity(named: "`loadLastSeachText` is called") { _ in
-                    XCTAssertEqual(historyInteractor.callCount_loadLastSeachText, 1)
-                }
-            }
-        }
-    }
     
     func test_searchButtonDidPush() {
         // PresenterにsearchButtonDidPushイベントが届いたときの挙動をテスト
+        // SearchRepositoryInteractorに検索を依頼しているか
+        // 正常時やエラー時に適切にViewに描画依頼をしているか
         XCTContext.runActivity(named: "searchButtonDidPush") { _ in
             XCTContext.runActivity(named: "when before called") { _ in
                 XCTContext.runActivity(named: "`fetchRepositories` is not called") { _ in
-                    XCTAssertEqual(repositoryInteractor.callCount_fetchRepositories, 0)
+                    XCTAssertEqual(searchRepositoryInteractor.callCount_fetchRepositories, 0)
                 }
             }
             
             XCTContext.runActivity(named: "when after called") { _ in
                 XCTContext.runActivity(named: "`fetchRepositories` is called") { _ in
                     presenter.searchButtonDidPush(searchText: "Swift")
-                    XCTAssertEqual(repositoryInteractor.callCount_fetchRepositories, 1)
+                    XCTAssertEqual(searchRepositoryInteractor.callCount_fetchRepositories, 1)
                 }
                 
                 XCTContext.runActivity(named: "when `fetchRepositories` response error") { _ in
                     setUp()
-                    repositoryInteractor = .init(result: .failure(NSError()))
+                    searchRepositoryInteractor = .init(result: .failure(NSError()))
                     presenter = .init(view: view,
                                       router: router,
-                                      historyInteractor: historyInteractor,
-                                      repositoryInteractor: repositoryInteractor)
+                                      searchRepositoryInteractor: searchRepositoryInteractor)
                     
                     presenter.searchButtonDidPush(searchText: "Swift")
                     
@@ -98,11 +75,10 @@ class RepositorySearchResultPresenterTests: XCTestCase {
                                    starCount: 100000,
                                    owner: User(id: 0, login: "apple"))
                     ]
-                    repositoryInteractor = .init(result: .success(repositories))
+                    searchRepositoryInteractor = .init(result: .success(repositories))
                     presenter = .init(view: view,
                                       router: router,
-                                      historyInteractor: historyInteractor,
-                                      repositoryInteractor: repositoryInteractor)
+                                      searchRepositoryInteractor: searchRepositoryInteractor)
                     
                     presenter.searchButtonDidPush(searchText: "Swift")
                     
@@ -142,14 +118,6 @@ class RepositorySearchResultPresenterTests: XCTestCase {
         var isCalled_showRepositoryDetail = false
         func showRepositoryDetail(_ repository: Repository) {
             isCalled_showRepositoryDetail = true
-        }
-    }
-    
-    class HistoryInteractorMock: SearchHistoryUsecase {
-        
-        var callCount_loadLastSeachText = 0
-        func loadLastSeachText(completion: (Result<String, SearchHistoryError>) -> Void) {
-            callCount_loadLastSeachText += 1
         }
     }
     

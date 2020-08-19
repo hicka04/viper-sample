@@ -9,14 +9,11 @@
 import UIKit
 
 protocol RepositorySearchResultView: AnyObject {
-    
-    func setLastSearchText(_ text: String)
     func updateRepositories(_ repositories: [Repository])
     func showErrorAlert()
 }
 
 final class RepositorySearchResultViewController: UITableViewController {
-
     // Presenterへのアクセスはprotocolを介して行う
     var presenter: RepositorySearchResultPresentation!
     
@@ -43,8 +40,6 @@ final class RepositorySearchResultViewController: UITableViewController {
         navigationItem.titleView = searchBar
         
         tableView.register(RepositoryCell.self)
-        
-        presenter.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,11 +51,6 @@ final class RepositorySearchResultViewController: UITableViewController {
 
 // Viewのプロトコルに準拠する
 extension RepositorySearchResultViewController: RepositorySearchResultView {
-    
-    func setLastSearchText(_ text: String) {
-        searchBar.text = text
-    }
-    
     func updateRepositories(_ repositories: [Repository]) {
         self.repositories = repositories
     }

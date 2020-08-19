@@ -275,18 +275,10 @@
 		B8B4F51222DE9DE600146E74 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				B8B4F51322DE9DF800146E74 /* Usecases */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		B8B4F51322DE9DF800146E74 /* Usecases */ = {
-			isa = PBXGroup;
-			children = (
 				B8B4F51822DEA27B00146E74 /* SearchRepository */,
 				B8B4F51522DE9E9D00146E74 /* SearchHistory */,
 			);
-			path = Usecases;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		B8B4F51522DE9E9D00146E74 /* SearchHistory */ = {

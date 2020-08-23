@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RepositorySearchResultView: AnyObject {
-    func updateRepositories(_ repositories: [Repository])
+    func updateRepositories(_ repositories: [RepositoryEntity])
     func showErrorAlert()
 }
 
@@ -26,7 +26,7 @@ final class RepositorySearchResultViewController: UITableViewController {
         return searchBar
     }()
     
-    private var repositories: [Repository] = [] {
+    private var repositories: [RepositoryEntity] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData() // 画面の更新
@@ -46,7 +46,7 @@ final class RepositorySearchResultViewController: UITableViewController {
 
 // Viewのプロトコルに準拠する
 extension RepositorySearchResultViewController: RepositorySearchResultView {
-    func updateRepositories(_ repositories: [Repository]) {
+    func updateRepositories(_ repositories: [RepositoryEntity]) {
         self.repositories = repositories
     }
     

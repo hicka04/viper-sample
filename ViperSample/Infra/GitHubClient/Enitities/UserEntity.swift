@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserEntity.swift
 //  viper-sample
 //
 //  Created by hicka04 on 2018/07/26.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct User: Decodable {
-    
+struct UserEntity: Decodable {
     let id: Int
     let login: String
 }

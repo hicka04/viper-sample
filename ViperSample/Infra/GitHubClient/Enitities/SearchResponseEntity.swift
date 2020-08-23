@@ -1,5 +1,5 @@
 //
-//  SearchResponse.swift
+//  SearchResponseEntity.swift
 //  viper-sample
 //
 //  Created by hicka04 on 2018/07/26.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct SearchResponse<Item: Decodable>: Decodable {
-
+struct SearchResponseEntity<Item: Decodable>: Decodable {
     let totalCount: Int
     let items: [Item]
     

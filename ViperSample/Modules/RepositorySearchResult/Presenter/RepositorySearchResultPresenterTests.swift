@@ -68,12 +68,12 @@ class RepositorySearchResultPresenterTests: XCTestCase {
                 XCTContext.runActivity(named: "when `fetchRepositories` response succeed") { _ in
                     setUp()
                     let repositories = [
-                        Repository(id: 0,
+                        RepositoryEntity(id: 0,
                                    name: "Swift",
                                    fullName: "apple/Swift",
                                    htmlURL: URL(string: "https://github.com/apple/Swift/")!,
                                    starCount: 100000,
-                                   owner: User(id: 0, login: "apple"))
+                                   owner: UserEntity(id: 0, login: "apple"))
                     ]
                     searchRepositoryInteractor = .init(result: .success(repositories))
                     presenter = .init(view: view,
@@ -103,7 +103,7 @@ class RepositorySearchResultPresenterTests: XCTestCase {
         }
         
         var callCount_updateRepositories = 0
-        func updateRepositories(_ repositories: [Repository]) {
+        func updateRepositories(_ repositories: [RepositoryEntity]) {
             callCount_updateRepositories += 1
         }
         
@@ -116,21 +116,21 @@ class RepositorySearchResultPresenterTests: XCTestCase {
     class RouterMock: RepositorySearchResultWireframe {
         
         var isCalled_showRepositoryDetail = false
-        func showRepositoryDetail(_ repository: Repository) {
+        func showRepositoryDetail(_ repository: RepositoryEntity) {
             isCalled_showRepositoryDetail = true
         }
     }
     
     class RepositoryInteractorMock: SearchRepositoryUsecase {
         
-        let result: Result<[Repository], Error>
+        let result: Result<[RepositoryEntity], Error>
         
-        init(result: Result<[Repository], Error> = .failure(NSError())) {
+        init(result: Result<[RepositoryEntity], Error> = .failure(NSError())) {
             self.result = result
         }
         
         var callCount_fetchRepositories = 0
-        func fetchRepositories(keyword: String, completion: @escaping (Result<[Repository], Error>) -> Void) {
+        func fetchRepositories(keyword: String, completion: @escaping (Result<[RepositoryEntity], Error>) -> Void) {
             callCount_fetchRepositories += 1
             completion(result)
         }

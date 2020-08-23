@@ -54,7 +54,7 @@ final class GitHubAPI {
     
     struct SearchRepositories: GitHubRequest {
         
-        typealias Response = SearchResponse<Repository>
+        typealias Response = SearchResponseEntity<RepositoryEntity>
         
         let keyword: String
         
@@ -73,7 +73,7 @@ final class GitHubAPI {
     
     struct SearchUsers: GitHubRequest {
         
-        typealias Response = SearchResponse<User>
+        typealias Response = SearchResponseEntity<UserEntity>
         
         let keyword: String
         

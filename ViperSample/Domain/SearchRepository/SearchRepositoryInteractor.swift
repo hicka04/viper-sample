@@ -11,7 +11,7 @@ import Foundation
 protocol SearchRepositoryUsecase: AnyObject {
     
     func fetchRepositories(keyword: String,
-                           completion: @escaping (Result<[Repository], Error>) -> Void)
+                           completion: @escaping (Result<[RepositoryEntity], Error>) -> Void)
 }
 
 final class SearchRepositoryInteractor {
@@ -29,7 +29,7 @@ final class SearchRepositoryInteractor {
 extension SearchRepositoryInteractor: SearchRepositoryUsecase {
     
     func fetchRepositories(keyword: String,
-                           completion: @escaping (Result<[Repository], Error>) -> Void) {
+                           completion: @escaping (Result<[RepositoryEntity], Error>) -> Void) {
         let request = GitHubAPI.SearchRepositories(keyword: keyword)
         client.send(request: request) { result in
             completion(result.map { $0.items })

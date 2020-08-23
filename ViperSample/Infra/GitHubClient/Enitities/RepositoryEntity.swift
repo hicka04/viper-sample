@@ -1,5 +1,5 @@
 //
-//  Repository.swift
+//  RepositoryEntity.swift
 //  viper-sample
 //
 //  Created by hicka04 on 2018/07/26.
@@ -8,14 +8,13 @@
 
 import Foundation
 
-struct Repository: Decodable {
-
+struct RepositoryEntity: Decodable {
     let id: Int
     let name: String
     let fullName: String
     let htmlURL: URL
     let starCount: Int
-    let owner: User
+    let owner: UserEntity
     
     enum CodingKeys: String, CodingKey {
         case id

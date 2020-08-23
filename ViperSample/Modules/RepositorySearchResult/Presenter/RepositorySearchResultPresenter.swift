@@ -10,7 +10,7 @@ import Foundation
 
 protocol RepositorySearchResultPresentation: AnyObject {
     func searchButtonDidPush(searchText: String)
-    func didSelect(repository: Repository)
+    func didSelect(repository: RepositoryEntity)
 }
 
 final class RepositorySearchResultPresenter {
@@ -45,7 +45,7 @@ extension RepositorySearchResultPresenter: RepositorySearchResultPresentation {
         }
     }
     
-    func didSelect(repository: Repository) {
+    func didSelect(repository: RepositoryEntity) {
         router.showRepositoryDetail(repository)
     }
 }

@@ -1,0 +1,26 @@
+DefaultTemplateDirectoryPath: ./KuriTemplate/
+ProjectRootPath: ./
+ProjectFileName: ViperSample.xcodeproj
+GenerateRootPath: ./ViperSample/Modules/
+Target: ViperSample
+ShouldRemoveLayerNameFromDirectory: false
+
+Interactor:
+  ProjectRootPath: ./
+  ProjectFileName: ViperSample.xcodeproj
+  GenerateRootPath: ./ViperSample/Domain/
+  Target: ViperSample
+  ShouldRemoveLayerNameFromDirectory: true
+
+InteractorTests:
+  ProjectRootPath: ./
+  ProjectFileName: ViperSample.xcodeproj
+  GenerateRootPath: ./ViperSample/Domain/
+  Target: ViperSampleTests
+  ShouldRemoveLayerNameFromDirectory: true
+
+PresenterTests:
+  ProjectRootPath: ./
+  ProjectFileName: ViperSample.xcodeproj
+  GenerateRootPath: ./ViperSample/Modules/
+  Target: ViperSampleTests

@@ -73,6 +73,7 @@ extension RepositorySearchResultViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Presenterにイベント通知
         presenter.didSelect(repository: repositories[indexPath.row])
     }
 }
@@ -82,6 +83,7 @@ extension RepositorySearchResultViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
         
+        // Presenterにイベント通知
         presenter.searchButtonDidPush(searchText: text)
         
         searchBar.resignFirstResponder()
